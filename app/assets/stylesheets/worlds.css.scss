@@ -1,0 +1,47 @@
+#goldlist {
+  width: 900px;
+  margin: 10px auto;
+  border: 1px solid #888888;
+  border-radius: 5px 5px 0 0;
+  table {
+    width: inherit;
+    text-align: center;
+    border-collapse: collapse;
+  }
+  thead {
+    font-weight: bold;
+  }
+  tr {
+
+  }
+  td {
+    padding: 10px;
+  }
+  .smalltext {
+    font-size: 12px;
+  }
+  .lefttext {
+    text-align: left;
+  }
+  .righttext {
+    text-align: right;
+  }
+  .odd {
+    background-color: #ccc;
+  }
+  .even {
+    background-color: #bbb;
+  }
+  .bold {
+    font-weight: bold;
+  }
+  .red {
+    color: darkred;
+  }
+  .orange {
+    color: darkorange;
+  }
+  .gray {
+    color: #999999;
+  }
+}

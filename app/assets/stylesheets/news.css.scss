@@ -1,0 +1,20 @@
+.news-entry {
+  margin-bottom: 10px;
+  font-size: 14px;
+  .news-header {
+    margin-bottom: 5px;
+    font-weight: bold;
+    border-bottom: 1px dotted #666666;
+    .news-date {
+    }
+    .news-title {
+    }
+  }
+  .news-content {
+    text-align: justify;
+  }
+}
+#news-archive-link {
+  border-top: 1px solid #666666;
+  font-size: 12px;
+}

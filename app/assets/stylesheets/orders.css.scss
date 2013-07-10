@@ -1,0 +1,39 @@
+#step-indicator {
+  margin-top: 30px;
+  div {
+    width: 135px;
+    float: left;
+    font-weight: bold;
+    color: #aaaaaa;
+    text-align: center;
+  }
+  .thin {
+    width: 10px;
+  }
+}
+.initially-hidden {
+  display: none;
+}
+#next-button {
+  display: block;
+  width: 100px;
+  margin-top: 30px;
+  float: right;
+}
+#previous-button {
+  display: none;
+  width: 100px;
+  margin-top: 30px;
+  float: left;
+}
+.align-right {
+  text-align: right;
+}
+#amount-picker img {
+  display: block;
+  margin-left: 109px;
+}
+#rate-reduction-teaser {
+  display: none;
+  font-size: 14px;
+}

@@ -1,0 +1,25 @@
+<% provide(:title, 'Gold List') %>
+<div id="goldlist">
+<table>
+  <thead>
+    <tr>
+      <td>Server name</td>
+      <td>Server location</td>
+      <td>Server type</td>
+      <td>Smuggling status</td>
+      <td>Gold amount</td>
+    </tr>
+  </thead>
+  <tbody>
+  <% @worlds.each do |world| %>
+    <tr class="<%= cycle('odd', 'even') -%>">
+      <td><%= world.name %></td>
+      <td><%= location_icon_for(world.location) %></td>
+      <td><%= world.world_type.name %></td>
+      <td class="smalltext"><%= transfer_status_for(world) %></td>
+      <td class="righttext"><%= number_with_delimiter(world.amount, delimiter: ' ') %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>

@@ -1,0 +1,18 @@
+<% provide(:title, 'News archive') %>
+<div class="container-block">
+  <h2>News archive</h2>
+  <%= '<h3>There are no news entries yet!</h3>'.html_safe if @news.empty? %>
+  <% @news.each do |news| %>
+    <div class="news-entry">
+      <div class="news-header">
+        <span class="news-date"><%= news.date_to_show.strftime('%b %d %Y') %></span> -
+        <span class="news-title"><%= link_to news.title, titled_news_path(news.id, news.title.downcase.gsub(' ', '-')) %></span>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="container-block on-the-right">
+  <h2>Info</h2>
+  Welcome to our news archive!<br /><br />
+  Click the title of a news entry in order to view its contents.
+</div>

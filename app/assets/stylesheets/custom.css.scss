@@ -1,0 +1,218 @@
+$headerGray: #282828;
+
+/* GENERAL */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #aaa;
+  font-family: "Trebuchet MS", Verdana;
+  color: #333;
+}
+
+.centered {
+  width: 1000px;
+  margin: 0 auto;
+}
+h2 {
+  margin-top: 0px;
+}
+
+textarea:focus, input:focus {
+  outline:  none;
+}
+
+img {
+  border:  none;
+}
+
+a {
+  text-decoration: none;
+  text-align: center;
+  color: #8e0000;
+}
+
+/* HEADER */
+#header-container {
+  background-color: $headerGray;
+  header {
+    height: 100px;
+    background-color: inherit;
+    #header-center-image {
+        margin-left: 25px;
+    }
+    #gold-count-and-flag-holder {
+      float: right;
+      width: 465px;
+      #gold-count img {
+        float: right;
+      }
+      #gold-count :first-child {
+        margin-left: 10px;
+      }
+      #flag-holder {
+        margin-bottom: 15px;
+        img {
+          margin-left: 10px;
+          margin-top: 5px;
+          float: right;
+        }
+      }
+    }
+  }
+}
+
+/* NAVIGATION */
+nav {
+  height: 50px;
+  padding: 0px;
+  background: url("nav_background.png");
+  a {
+    display: block;
+    width: 153px;
+    height: 34px;
+    float: left;
+    padding-top: 9px;
+    margin-top: 3px;
+    border-radius: 5px;
+    color: #ccc;
+    font-size: 20px;
+    font-family: "Trebuchet MS", Tahoma, Helvetica;
+    font-weight: bold;
+    transition-duration: 0.2s;
+    &:first-child {
+      margin-left: 40px;
+    }
+    &:hover, &:active {
+      background-color: #333;
+    }
+  }
+}
+
+/* WRAPPER, CONTAINER */
+#over-container-line {
+  min-width: 1000px;
+  width: 100%;
+  height: 8px;
+  margin-bottom: 3px;
+  background: url("line.png") repeat-x;
+}
+
+#container {
+  width: 946px;
+  min-height: 500px;
+  margin: 5px auto 0px;
+  padding: 10px 0px;
+  overflow: visible;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #ddd;
+  .container-block {
+    float: left;
+    width:  432px;
+    min-height: 480px;
+    padding: 15px;
+  }
+  .small {
+    width: 250px;
+  }
+  .big {
+    width: 614px;
+  }
+  .full {
+    width: 900px;
+  }
+  .on-the-right {
+    border-left: 1px solid #aaa;
+  }
+}
+
+#under-container-line {
+  width: 1000px;
+  height: 68px;
+  background:  url('content_bottom_background.png') 2px 0px; /* This is what you have to do when your graphic artist is lazy */
+}
+
+/* MISC */
+.center-form {
+  margin: 0 auto;
+  width: 250px;
+  /* Fancy, but can't stay here ; )
+  opacity: 0.7;
+  transition-duration: 0.3s;
+  &:hover {
+    opacity: 1;
+  }*/
+}
+
+.smuggler-button {
+  margin: 0 auto;
+  width: 220px;
+  height: 40px;
+  background-color: #333;
+  color: #fff;
+  font-size: 16px;
+  text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  border: 1px solid #666;
+  transition-duration: 0.2s;
+  -webkit-transition-duration: 0.2s;
+  cursor: pointer;
+  &:hover {
+    background-color: #8e0000;
+  }
+}
+.as-link {
+  display: block;
+  height: 20px;
+  width: 200px;
+  padding: 10px;
+}
+
+.has-fancy-inputs input {
+  display: block;
+  height: 30px;
+  width: 228px;
+  padding: 10px;
+  font-size: 20px;
+  border:  1px solid #333333;
+  border-radius: 5px;
+  transition-duration: 0.2s;
+  -webkit-transition-duration: 0.2s;
+  &:focus {
+    box-shadow: 0 0 7px red;
+  }
+  &[type=submit] {
+    height: 50px;
+    width: 250px;
+    margin-top: 20px;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+.has-fancy-inputs select {
+  display: block;
+  height: 50px;
+  width: 250px;
+  padding: 10px;
+  font-size: 20px;
+  border:  1px solid #333333;
+  border-radius: 5px;
+  &:focus {
+    box-shadow: 0 0 7px red;
+  }
+}
+
+#error_explanation {
+  color: #8e0000;
+  ul {
+    list-style:  none;
+    padding-left: 0;
+  }
+}
+
+.float-clearer {
+  clear: both;
+}

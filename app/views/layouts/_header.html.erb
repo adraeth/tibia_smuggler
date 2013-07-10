@@ -1,0 +1,19 @@
+<div id="header-container">
+  <header class="centered">
+    <%= link_to image_tag('logo.png'), root_path %>
+    <%= random_header_center_image %>
+    <div id="gold-count-and-flag-holder">
+      <div id="flag-holder">
+        <%= link_to image_tag('flags/pl.png', alt: 'Polish'), '#' %>
+        <%= link_to image_tag('flags/en.png', alt: 'English'), '#' %>
+        <%= link_to image_tag('flags/es.png', alt: 'Spanish'), '#' %>
+        <%= link_to image_tag('flags/pt.png', alt: 'Portuguese'), '#' %>
+      </div>
+      <%= image_tag('currently_en.png', alt: 'Currently we have') %>
+      <div id="gold-count">
+        <%=  image_tag 'gold_en.png', alt: 'gold in gold_list.' %>
+        <%= gold_count_as_image_set %>
+      </div>
+    </div>
+  </header>
+</div>

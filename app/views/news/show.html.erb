@@ -1,0 +1,10 @@
+<% provide(:title, @news.title) %>
+<div class="container-block full">
+  <h2><%= "#{ @news.date_to_show.strftime('%b %d %Y') } - #{ @news.title }" %></h2>
+    <div class="news-entry">
+      <div class="news-content">
+        <%= simple_format(@news.content) %>
+      </div>
+    </div>
+  <%= link_to('Return to news archive', news_index_path, id: 'news-archive-link') %>
+</div>

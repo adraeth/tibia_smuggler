@@ -1,0 +1,41 @@
+<% provide(:title, 'Sign up / Login') %>
+<div class="container-block has-fancy-inputs">
+  <h2>Log in...</h2>
+  <div class="center-form">
+    <%= form_for(:session, url: sessions_path) do |f| %>
+      <% if flash[:error] %>
+         <div id="error_explanation"><%= flash[:error] %></div>
+      <% end %>
+
+      <%= f.label :email, 'Email or nickname' %>
+      <%= f.text_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.submit 'Log in', class: 'smuggler-button' %>
+    <% end %>
+  </div>
+</div>
+<div class="container-block on-the-right has-fancy-inputs">
+  <h2>... or create a new account!</h2>
+  <div class="center-form">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <%= f.label :name, 'Nickname' %>
+      <%= f.text_field :name %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, 'Confirmation' %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit 'Create my account', class: 'smuggler-button' %>
+    <% end %>
+  </div>
+</div>

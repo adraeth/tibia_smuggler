@@ -1,0 +1,73 @@
+<div class="container-block has-fancy-inputs">
+  <h2>Calculator</h2>
+  <div id="step-indicator">
+    <div>Select worlds</div>
+    <div class="thin">&#62;</div>
+    <div>Choose amount</div>
+    <div class="thin">&#62;</div>
+    <div>Finish order</div>
+  </div><br /><br /><br />
+  <div class="center-form">
+    <%= form_for(@order) do |f| %>
+
+      <% if @order.errors.any? %>
+        <div id="error_explanation">
+          <ul>
+            <% @order.errors.full_messages.each do |msg| %>
+              <li><%= msg %>!</li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div id="world-picker">
+        <%= f.label :world_from_id, 'From your game world' %>
+        <%= collection_select(:order, :world_from_id, World.all, :id, :name, include_blank: true) %>
+
+        <%= f.label :world_to_id, 'To our game world' %>
+        <%= collection_select(:order, :world_to_id, World.all, :id, :name, include_blank: true) %>
+      </div>
+
+      <div id="amount-picker" class="initially-hidden">
+        <%= image_tag('ajax-loader.gif', alt: 'Loading rate for selected worlds...') %>
+        <%= f.label :amount_to, 'How much gold do you need on <span id="to-world-name"></span>? (At least 10 000/10k)'.html_safe %>
+        <%= f.number_field :amount_to, value: 0, class: 'align-right', maxlength: 7 %>
+        <div id="rate-reduction-teaser">
+          <p>* 300k+ = -<span></span>%!</p>
+          <p>* 600k+ = -<span></span>%!</p>
+          <p>* 1kk+ = -<span></span>%!</p>
+        </div>
+        <%= label_tag :fake_amount_from, 'Amount to send (<span id="from-world-name"></span>)'.html_safe %>
+        <%= number_field_tag :fake_amount_from, 0, class: 'align-right', disabled: 'disabled' %>
+      </div>
+
+      <div id="final-details" class="initially-hidden">
+        <%= f.label :character_from, 'Character who sends gold' %>
+        <%= f.text_field :character_from %>
+
+        <%= f.label :character_to, 'Character who will receive gold' %>
+        <%= f.text_field :character_to %>
+
+        <%= f.submit 'Create my order', class: 'smuggler-button' %>
+      </div>
+    <% end %>
+    <button id="previous-button" class="smuggler-button" type="button">Back</button>
+    <button id="next-button" class="smuggler-button" type="button">Next</button>
+  </div>
+</div>
+<div class="container-block on-the-right">
+  <h2>Short news</h2>
+  <% @news.each do |news| %>
+    <div class="news-entry">
+      <div class="news-header">
+        <span class="news-date"><%= news.date_to_show.strftime('%b %d %Y') %></span> -
+        <span class="news-title"><%= news.title %></span>
+      </div>
+      <div class="news-content">
+        <%= simple_format(news.content) %>
+      </div>
+    </div>
+  <% end %>
+  <%= link_to('See all news entries', news_index_path, id: 'news-archive-link') unless @news.empty? %>
+  <%= '<h3>There are no news entries yet!</h3>'.html_safe if @news.empty? %>
+</div>
