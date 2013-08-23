@@ -9,12 +9,12 @@ TibiaSmuggler::Application.routes.draw do
 
   root to: 'orders#new'
 
-  match '/login',               to: 'sessions#new', as: 'login'
+  get '/login',               to: 'sessions#new', as: 'login'
   match '/logout',              to: 'sessions#destroy', via: :delete
-  match '/help',                to: 'static_pages#help'
-  match '/gold_list',           to: 'worlds#index'
-  match '/news/:id/:string',    to: 'news#show', as: 'titled_news'
-  match '/referrer/:referrer',  to: 'referrers#save', as: 'refer_to'
-  match '/rates/:from_world/:to_world', to: 'rates#show'
+  get '/help',                to: 'static_pages#help'
+  get '/gold_list',           to: 'worlds#index'
+  get '/news/:id/:string',    to: 'news#show', as: 'titled_news'
+  match '/referrer/:referrer',  to: 'referrers#save', as: 'refer_to', via: [:get, :post]
+  get '/rates/:from_world/:to_world', to: 'rates#show'
 
 end

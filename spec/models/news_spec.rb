@@ -41,7 +41,7 @@ describe News do
     end
 
     it 'the news should not be displayed' do
-      News.visible.should == [visible_news]
+      News.visible.to_a.should == [visible_news]
     end
   end
 

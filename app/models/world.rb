@@ -28,5 +28,5 @@ class World < ActiveRecord::Base
   validates :name, uniqueness: true, length: 1..30
   validates :rate, numericality: true
 
-  default_scope order('name asc')
+  default_scope { order('name asc') }
 end

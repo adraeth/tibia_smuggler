@@ -6,7 +6,7 @@ class WorldsController < ApplicationController
   end
 
   def index
-    @worlds = World.includes(:world_type).all
+    @worlds = World.includes(:world_type).to_a
   end
 
   def edit

@@ -17,7 +17,7 @@ class News < ActiveRecord::Base
   validates :title, length: { in: 5..50 }
   validates :content, length: { in: 20..1000 }
 
-  scope :visible, where("date_to_show <= '#{ Time.now }'")
-  scope :latest, limit(3)
-  default_scope order('date_to_show desc')
+  scope :visible, -> { where("date_to_show <= '#{ Time.now }'") }
+  scope :latest,  -> { limit(3) }
+  default_scope { order('date_to_show desc') }
 end

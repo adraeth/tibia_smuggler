@@ -1,4 +1,5 @@
 class UserMailer < ActionMailer::Base
+  default from: 'do-not-reply@tibiasmuggler.com'
 
   def signup_completed_email(user)
     @user = user

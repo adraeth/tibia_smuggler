@@ -19,7 +19,7 @@ FactoryGirl.define do
 
   factory :world_type do
     name  'Testional-PvP'
-    initialize_with { WorldType.find_or_create_by_name(name) }
+    initialize_with { WorldType.find_or_create_by(name: name) }
   end
 
   factory :world do
