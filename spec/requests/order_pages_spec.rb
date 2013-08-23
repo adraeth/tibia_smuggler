@@ -12,13 +12,12 @@ describe 'Order pages' do
   describe 'new (root) page' do
 
     before { visit root_path }
-    it { should have_selector('title', text: base_title) }
+    it { should have_title(base_title) }
     it { should_not have_selector('title', text: '|') }
     it { should have_link('Home Page', href: root_path) }
     it { should have_link('Order WT', href: '#') }
     it { should have_link('Gold List', href: gold_list_path) }
     it { should have_link('Help', href: help_path) }
-    it { should have_link('Account'), href: '#' }
     it { should have_selector('h2', text: 'Calculator')}
     it { should have_selector('h2', text: 'Short news')}
 
@@ -54,7 +53,7 @@ describe 'Order pages' do
         describe 'after submission' do
           before { click_button submit }
 
-          it { should have_selector('title', text: base_title ) }
+          it { should have_title(base_title) }
           it { should have_selector('div#error_explanation') }
         end
       end
@@ -66,8 +65,8 @@ describe 'Order pages' do
             fill_in 'order_amount_to',                              with: 50000
             fill_in 'Character who sends gold',                     with: 'Korni'
             fill_in 'Character who will receive gold',              with: 'foobar'
-            select  'Aldora', from: 'From game world'
-            select  'Celesta', from: 'To game world'
+            select  'Aldora', from: 'order_world_from_id'
+            select  'Celesta', from: 'order_world_to_id'
           end
         end
 
@@ -84,8 +83,8 @@ describe 'Order pages' do
           fill_in 'order_amount_to',                              with: 50000
           fill_in 'Character who sends gold',                     with: 'Korni'
           fill_in 'Character who will receive gold',              with: 'foobar'
-          select  'Aldora', from: 'From game world'
-          select  'Celesta', from: 'To game world'
+          select  'Aldora', from: 'order_world_from_id'
+          select  'Celesta', from: 'order_world_to_id'
         end
       end
 

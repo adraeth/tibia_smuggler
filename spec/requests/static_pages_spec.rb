@@ -9,7 +9,7 @@ describe 'Static pages' do
   describe 'Help page' do
 
     before { visit help_path }
-    it { should have_selector('title', text: "#{ base_title } | Help") }
+    it { should have_title("#{ base_title } | Help") }
   end
 
 end

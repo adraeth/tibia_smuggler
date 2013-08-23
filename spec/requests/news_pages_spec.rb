@@ -9,13 +9,13 @@ describe 'News pages' do
 
   describe 'News index page' do
     before { visit gold_list_path }
-    it { should have_selector('title', text: "#{ base_title} | Gold List") }
+    it { should have_title("#{ base_title} | Gold List") }
   end
 
   describe 'News archive page' do
 
     before { visit news_index_path }
-    it { should have_selector('title', text: "#{ base_title} | News archive") }
+    it { should have_title("#{ base_title} | News archive") }
     it { should have_selector('h2', text: 'News archive')}
     it { should have_selector('h2', text: 'Info')}
 
@@ -36,7 +36,7 @@ describe 'News pages' do
         FactoryGirl.create(:news, date_to_show: Time.now)
       end
       before { visit current_path }
-      it { should_not have_selector('h3'), text: no_news_message}
+      it { should_not have_selector('h3', text: no_news_message) }
     end
   end
 
@@ -44,7 +44,7 @@ describe 'News pages' do
     let(:news) { FactoryGirl.create(:news) }
     before { visit news_path(news) }
 
-    it { should have_selector('title', text: "#{ base_title} | #{ news.title }") }
+    it { should have_title("#{ base_title} | #{ news.title }") }
     it { should have_selector('div.news-content', text: news.content )}
     it { should have_link('Return to news archive', href: news_index_path )}
 
