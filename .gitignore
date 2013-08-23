@@ -19,3 +19,6 @@
 
 # Ignore env variables file for security purposes
 /config/app_env_variables.rb
+
+# Ignore App.config.secret_key_base file
+/.secret
