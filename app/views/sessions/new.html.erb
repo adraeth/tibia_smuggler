@@ -2,7 +2,7 @@
 <div class="container-block has-fancy-inputs">
   <h2>Log in...</h2>
   <div class="center-form">
-    <%= form_for(:session, url: sessions_path) do |f| %>
+    <%= form_for(:session, url: sessions_path, html: { id: 'login-form' }) do |f| %>
       <% if flash[:error] %>
          <div id="error_explanation"><%= flash[:error] %></div>
       <% end %>
