@@ -7,6 +7,9 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'jquery-rails', '3.0.4'
 gem 'jquery-ui-rails', '4.0.4'
 gem 'protected_attributes', '1.0.3'
+gem 'sass-rails',   '4.0.0'
+gem 'coffee-rails', '4.0.0'
+gem 'uglifier', '2.1.2'
 
 group :development, :test do
   gem 'sqlite3'
@@ -15,14 +18,6 @@ end
 
 group :development do
   gem 'annotate', '2.5.0'
-end
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '4.0.0'
-  gem 'coffee-rails', '4.0.0'
-  gem 'uglifier', '2.1.2'
 end
 
 group :test do
