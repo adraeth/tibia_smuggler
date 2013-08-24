@@ -29,7 +29,6 @@ GEM
       rake
     arel (4.0.0)
     atomic (1.1.13)
-    bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
     builder (3.1.4)
     capybara (2.1.0)
@@ -55,7 +54,6 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
-    ffi (1.9.0)
     ffi (1.9.0-x86-mingw32)
     hike (1.2.3)
     i18n (0.6.5)
@@ -73,8 +71,6 @@ GEM
     mini_portile (0.5.1)
     minitest (4.7.5)
     multi_json (1.7.8)
-    nokogiri (1.6.0)
-      mini_portile (~> 0.5.0)
     nokogiri (1.6.0-x86-mingw32)
       mini_portile (~> 0.5.0)
     pg (0.16.0-x86-mingw32)
@@ -169,4 +165,5 @@ DEPENDENCIES
   sass-rails (= 4.0.0)
   selenium-webdriver (= 2.0.0)
   sqlite3
+  therubyracer
   uglifier (= 2.1.2)
