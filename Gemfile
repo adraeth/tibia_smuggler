@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '1.9.3'
 
+gem 'multi_json', '1.7.8'
 gem 'rails', '4.0.0'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'jquery-rails', '3.0.4'
