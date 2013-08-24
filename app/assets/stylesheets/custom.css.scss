@@ -65,7 +65,7 @@ a {
 nav {
   height: 50px;
   padding: 0px;
-  background: url("nav_background.png");
+  background: image-url("nav_background.png");
   a {
     display: block;
     width: 153px;
@@ -94,7 +94,7 @@ nav {
   width: 100%;
   height: 8px;
   margin-bottom: 3px;
-  background: url("line.png") repeat-x;
+  background: image-url("line.png") repeat-x;
 }
 
 #container {
@@ -130,7 +130,7 @@ nav {
 #under-container-line {
   width: 1000px;
   height: 68px;
-  background:  url('content_bottom_background.png') 2px 0px; /* This is what you have to do when your graphic artist is lazy */
+  background:  image-url('content_bottom_background.png') 2px 0px; /* This is what you have to do when your graphic artist is lazy */
 }
 
 /* MISC */
