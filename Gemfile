@@ -8,7 +8,7 @@ gem 'jquery-rails', '3.0.4'
 gem 'jquery-ui-rails', '4.0.4'
 gem 'protected_attributes', '1.0.3'
 gem 'sass-rails',   '4.0.0'
-gem 'coffee-rails', '4.0.0'
+gem 'coffee-rails', '3.2.2'
 gem 'uglifier', '2.1.2'
 
 group :development, :test do
