@@ -57,14 +57,14 @@ $(document).ready ->
         step++
   $('#order_amount_to').keyup ->
     if reducible
-      if $('#order_amount_to').val() > 1000000
+      if $('#order_amount_to').val() >= 1000000
         correct_rate = rate - reduction_step * 3
         $('#rate-reduction-teaser').children().css({'font-weight': 'bold', 'color': '#339933'})
-      else if $('#order_amount_to').val() > 600000
+      else if $('#order_amount_to').val() >= 600000
         correct_rate = rate - reduction_step * 2
         $('#rate-reduction-teaser').children().css({'font-weight': 'bold', 'color': '#339933'})
         $('#rate-reduction-teaser p:last-child').css({'font-weight': 'normal', 'color': '#333333'})
-      else if $('#order_amount_to').val() > 300000
+      else if $('#order_amount_to').val() >= 300000
         correct_rate = rate - reduction_step
         $('#rate-reduction-teaser').children().css({'font-weight': 'normal', 'color': '#333333'})
         $('#rate-reduction-teaser p:first-child').css({'font-weight': 'bold', 'color': '#339933'})
