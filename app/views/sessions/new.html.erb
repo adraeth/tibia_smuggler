@@ -1,4 +1,10 @@
 <% provide(:title, 'Sign up / Login') %>
+<% if flash[:notice] %>
+  <div class="flash-info"><%= flash[:notice] %></div>
+<% end %>
+<% if session[:order] && flash[:notice].nil? %>
+  <div class="flash-info"><%= 'Log in to confirm your latest order.' %></div>
+<% end %>
 <div class="container-block has-fancy-inputs">
   <h2>Log in...</h2>
   <div class="center-form">

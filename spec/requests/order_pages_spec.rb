@@ -92,12 +92,14 @@ describe 'Order pages' do
         expect { click_button submit }.not_to change(Order, :count).by(1)
       end
 
-      describe 'it should save the order for later use' do
-      end
-
       describe 'it should redirect to login page' do
         before { post orders_path }
         specify { response.should redirect_to(login_path) }
+      end
+
+      describe 'it should inform the user about what happened' do
+        before { click_button submit }
+        it { should have_selector('div.flash-info', text: 'You order details were saved. Please log in or create an account to confirm your order.') }
       end
     end
   end

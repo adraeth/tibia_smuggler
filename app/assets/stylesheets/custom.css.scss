@@ -162,6 +162,9 @@ nav {
   &:hover {
     background-color: #8e0000;
   }
+  &:disabled {
+    opacity: 0.5
+  }
 }
 .as-link {
   display: block;
@@ -215,4 +218,15 @@ nav {
 
 .float-clearer {
   clear: both;
+}
+.flash-info {
+  width: 890px;
+  min-height: 30px;
+  margin: 0 auto 10px;
+  padding: 10px 20px;
+  border: 1px solid #0077AA;
+  border-radius: 5px 5px 5px 5px;
+  text-align: center;
+  font-size: 22px;
+  color: #0077AA;
 }

@@ -7,6 +7,15 @@ $(document).ready ->
   rate = 0.0
   reducible = false
   reduction_step = 0.0
+  char_from_exists = false
+  char_to_exists = false
+  submitOrder = ->
+    if char_from_exists && char_to_exists
+      $('#character-to-input').prop('disabled', false)
+      $('#character-from-input').prop('disabled', false)
+      $('#new_order').submit()
+    else
+      console.log('One of parameters in submitOrder is still false')
   $('#next-button').click ->
     switch step
       when 1
@@ -55,6 +64,61 @@ $(document).ready ->
         $('#amount-picker').fadeOut(-> $('#final-details').fadeIn())
         $('#next-button').fadeOut()
         step++
+  $('#previous-button').click ->
+    switch step
+      when 2
+        $('#step-indicator div:nth-child(3)').animate({color: '#aaa'}, 400, ->
+          $('#step-indicator div:nth-child(1)').animate({color: '#282828'}, 400))
+        $('#amount-picker').fadeOut(-> $('#world-picker').fadeIn())
+        $('#previous-button').fadeOut()
+        step--
+      when 3
+        $('#step-indicator div:nth-child(5)').animate({color: '#aaa'}, 400, ->
+          $('#step-indicator div:nth-child(3)').animate({color: '#282828'}, 400))
+        $('#final-details').fadeOut(-> $('#amount-picker').fadeIn())
+        $('#next-button').fadeIn()
+        step--
+  $('#create-order-button').click (event)->
+    event.preventDefault()
+    $(this).prop('disabled', true)
+    $('#character-from-input').prop('disabled', true).animate({color: '#aaa'}, 200)
+    $('#character-to-input').prop('disabled', true).animate({color: '#aaa'}, 200)
+    if !char_from_exists
+      console.log('Verifying char from.')
+      $.ajax
+        type: 'get'
+        data: {"name" : $('#character-from-input').val(), "world" : $('#order_world_from_id option:selected').html()}
+        dataType: 'jsonp'
+        url: 'http://smuggler.home.pl/smuggler_ajax.php'
+        success: (json) ->
+          console.log('jsonp from success')
+          if json.result == 'success'
+            console.log('jsonp from result success')
+            char_from_exists = true
+            submitOrder()
+          else
+            console.log(json.message)
+            $('#create-order-button').prop('disabled', false)
+            $('#character-from-input').prop('disabled', false).animate({color: '#000'}, 200)
+            $('#character-from-input').css("border-color", "red").effect('highlight', {color: '#8e0000'})
+    if !char_to_exists
+      console.log('Verifying char to.')
+      $.ajax
+        type: 'get'
+        data: {"name" : $('#character-to-input').val(), "world" : $('#order_world_to_id option:selected').html()}
+        dataType: 'jsonp'
+        url: 'http://smuggler.home.pl/smuggler_ajax.php'
+        success: (json) ->
+          console.log('jsonp to success')
+          if json.result == 'success'
+            console.log('jsonp to result success')
+            char_to_exists = true
+            submitOrder()
+          else
+            console.log(json.message)
+            $('#create-order-button').prop('disabled', false)
+            $('#character-to-input').prop('disabled', false).animate({color: '#000'}, 200)
+            $('#character-to-input').css("border-color", "red").effect('highlight', {color: '#8e0000'})
   $('#order_amount_to').keyup ->
     if reducible
       if $('#order_amount_to').val() >= 1000000

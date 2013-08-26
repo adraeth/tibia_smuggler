@@ -1,3 +1,6 @@
+<% if session[:order] %>
+  <div class="flash-info"><%= 'Log in to confirm your latest order.' %></div>
+<% end %>
 <div class="container-block has-fancy-inputs">
   <h2>Calculator</h2>
   <div id="step-indicator">
@@ -22,10 +25,10 @@
 
       <div id="world-picker">
         <%= f.label :world_from_id, 'From your game world' %>
-        <%= collection_select(:order, :world_from_id, World.all, :id, :name, include_blank: true) %>
+        <%= collection_select(:order, :world_from_id, World.all, :id, :name, include_blank: 'Choose world...') %>
 
         <%= f.label :world_to_id, 'To our game world' %>
-        <%= collection_select(:order, :world_to_id, World.all, :id, :name, include_blank: true) %>
+        <%= collection_select(:order, :world_to_id, World.all, :id, :name, include_blank: 'Choose world...') %>
       </div>
 
       <div id="amount-picker" class="initially-hidden">
@@ -43,12 +46,12 @@
 
       <div id="final-details" class="initially-hidden">
         <%= f.label :character_from, 'Character who sends gold' %>
-        <%= f.text_field :character_from %>
+        <%= f.text_field :character_from, id: 'character-from-input' %>
 
         <%= f.label :character_to, 'Character who will receive gold' %>
-        <%= f.text_field :character_to %>
+        <%= f.text_field :character_to, id: 'character-to-input' %>
 
-        <%= f.submit 'Create my order', class: 'smuggler-button' %>
+        <%= f.submit 'Create my order', id: 'create-order-button', class: 'smuggler-button' %>
       </div>
     <% end %>
     <button id="previous-button" class="smuggler-button" type="button">Back</button>
