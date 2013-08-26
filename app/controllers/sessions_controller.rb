@@ -12,7 +12,11 @@ class SessionsController < ApplicationController
     if LoginAttempt::allowed?(request.remote_ip)
       if user && user.authenticate(params[:session][:password])
         sign_in user
-        redirect_to user
+        if session[:order]
+          redirect_to confirm_order_path
+        else
+          redirect_to user
+        end
       else
         failed_login_with_message('Invalid login data!')
       end

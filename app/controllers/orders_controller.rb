@@ -12,6 +12,8 @@ class OrdersController < ApplicationController
 
   def create
     if signed_in?
+      params[:order] = session[:order] || params[:order]
+      session[:order] = nil
       @order = current_user.orders.build(params[:order])
       if @order.save
         redirect_to @order # TODO: Change path a correct one
@@ -19,8 +21,8 @@ class OrdersController < ApplicationController
         render 'orders/new'
       end
     else
-      session[:order] = Order.new(params[:order])
-      flash[:notice] = 'You need to be logged in to create an order'
+      session[:order] = params[:order]
+      flash[:notice] = 'You order details were saved. Please log in or create an account to confirm your order.'
       redirect_to login_path
     end
   end

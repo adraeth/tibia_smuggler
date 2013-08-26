@@ -5,7 +5,11 @@ class UsersController < ApplicationController
     @user.save_signup_ip request.remote_ip
     if @user.save
       sign_in(@user)
-      redirect_to @user
+      if session[:order].nil?
+        redirect_to @user
+      else
+        redirect_to confirm_order_path
+      end
     else
       render 'sessions/new'
     end
