@@ -63,8 +63,8 @@ describe 'Order pages' do
         before do
           within 'form#new_order' do
             fill_in 'order_amount_to',                              with: 50000
-            fill_in 'Character who sends gold',                     with: 'Korni'
-            fill_in 'Character who will receive gold',              with: 'foobar'
+            fill_in 'character-from-input',                         with: 'Korni'
+            fill_in 'character-to-input',                           with: 'foobar'
             select  'Aldora', from: 'order_world_from_id'
             select  'Celesta', from: 'order_world_to_id'
           end
@@ -81,8 +81,8 @@ describe 'Order pages' do
         visit root_path
         within 'form#new_order' do
           fill_in 'order_amount_to',                              with: 50000
-          fill_in 'Character who sends gold',                     with: 'Korni'
-          fill_in 'Character who will receive gold',              with: 'foobar'
+          fill_in 'character-from-input',                         with: 'Korni'
+          fill_in 'character-to-input',                           with: 'foobar'
           select  'Aldora', from: 'order_world_from_id'
           select  'Celesta', from: 'order_world_to_id'
         end
