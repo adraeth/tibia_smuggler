@@ -14,7 +14,7 @@ TibiaSmuggler::Application.routes.draw do
   get '/help',                        to: 'static_pages#help'
   get '/gold_list',                   to: 'worlds#index'
   get '/news/:id/:string',            to: 'news#show', as: 'titled_news'
-  match '/referrer/:referrer',        to: 'referrers#save', as: 'refer_to', via: [:get, :post]
+  get '/referrer/:referrer',          to: 'referrers#save', as: 'refer_to'
   get '/rates/:from_world/:to_world', to: 'rates#show'
   match '/confirm_order',             to: 'orders#create', as: 'confirm_order', via: [:get]
 

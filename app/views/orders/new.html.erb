@@ -1,6 +1,9 @@
 <% if session[:order] %>
   <div class="flash-info"><%= 'Log in to confirm your latest order.' %></div>
 <% end %>
+<% if flash[:no_referrer] %>
+  <div class="flash-error"><%= flash[:no_referrer] %></div>
+<% end %>
 <div class="container-block has-fancy-inputs">
   <h2>Calculator</h2>
   <div id="step-indicator">

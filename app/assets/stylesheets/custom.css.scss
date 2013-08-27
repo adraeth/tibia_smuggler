@@ -219,6 +219,8 @@ nav {
 .float-clearer {
   clear: both;
 }
+
+/* FLASH NOTICES */
 .flash-info {
   width: 890px;
   min-height: 30px;
@@ -229,4 +231,15 @@ nav {
   text-align: center;
   font-size: 22px;
   color: #0077AA;
+}
+.flash-error {
+  width: 890px;
+  min-height: 30px;
+  margin: 0 auto 10px;
+  padding: 10px 20px;
+  border: 1px solid #eb9a00;
+  border-radius: 5px 5px 5px 5px;
+  text-align: center;
+  font-size: 22px;
+  color: #eb9a00;
 }
