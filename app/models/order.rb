@@ -32,6 +32,8 @@ class Order < ActiveRecord::Base
   before_create :calculate_amount_from
   before_create :apply_status
 
+  after_create :send_creation_email
+
   validates :amount_from, numericality: { greater_than_or_equal_to: 0 }, on: :update
   validates :amount_to, numericality: { greater_than_or_equal_to: 10_000, less_than_or_equal_to: 5_000_000 }
   VALID_CHARNAME_REGEX = /\A[a-z]+[a-z'\- ]+[a-z]\z/i
@@ -67,5 +69,9 @@ class Order < ActiveRecord::Base
 
     def world_from_and_to_must_differ
       errors.add(:world_to, 'and your world must be different') if world_from_id == world_to_id
+    end
+
+    def send_creation_email
+      OrderMailer.order_created_email(self).deliver
     end
 end
