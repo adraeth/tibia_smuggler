@@ -1,5 +1,8 @@
-# TODO: Refactor spaghetti, DRY!
+# TODO: Refactor spaghetti, DRY (at least the validateCharacter[..] methods)!
+# TODO: Handle jsonp errors
+# TODO: Handle jsonp results differently ('fail' and 'error' should not behave the same way)
 $(document).ready ->
+
   # Initial display settings
   $('#step-indicator div:nth-child(1)').css('color', '#282828')
   $('#amount-picker').children().css('display', 'none')
@@ -72,6 +75,8 @@ $(document).ready ->
     console.log('Trigger error highlighting for character-to')
     $('#character-to-input').css("border-color", "red").hide().effect('highlight', {color: '#8e0000'})
 
+  # Called by character name input validation methods when they get their jsonp back
+  # Will only submit form if both names are confirmed to exist on selected game worlds
   submitOrder = ->
     if char_from_exists && char_to_exists
       $('#character-to-input').prop('disabled', false)
@@ -79,6 +84,8 @@ $(document).ready ->
       $('#new_order').submit()
     else
       console.log('One of parameters in submitOrder is still false')
+
+  # UI control for 'next' button
   $('#next-button').click ->
     switch step
       when 1
@@ -125,6 +132,8 @@ $(document).ready ->
         $('#amount-picker').fadeOut(-> $('#final-details').fadeIn())
         $('#next-button').fadeOut()
         step++
+
+  # UI control for 'back' button
   $('#previous-button').click ->
     switch step
       when 2
@@ -139,6 +148,8 @@ $(document).ready ->
         $('#final-details').fadeOut(-> $('#amount-picker').fadeIn())
         $('#next-button').fadeIn()
         step--
+
+  # When order submit button is clicked
   $('#create-order-button').click (event)->
     event.preventDefault()
     $(this).prop('disabled', true)
@@ -146,43 +157,8 @@ $(document).ready ->
       validateCharacterFrom()
     if !char_to_exists
       validateCharacterTo()
-    ###  console.log('Verifying char from.')
-      $.ajax
-        type: 'get'
-        data: {"name" : $('#character-from-input').val(), "world" : $('#order_world_from_id option:selected').html()}
-        dataType: 'jsonp'
-        url: 'http://smuggler.home.pl/smuggler_ajax.php'
-        success: (json) ->
-          console.log('jsonp from success')
-          if json.result == 'success'
-            console.log('jsonp from result success')
-            char_from_exists = true
-            submitOrder()
-          else
-            console.log(json.message)
-            $('#create-order-button').prop('disabled', false)
-            $('#character-from-input').prop('disabled', false).animate({color: '#000'}, 200)
-            $('#character-from-input').css("border-color", "red").effect('highlight', {color: '#8e0000'})
 
-
-    if !char_to_exists
-      console.log('Verifying char to.')
-      $.ajax
-        type: 'get'
-        data: {"name" : $('#character-to-input').val(), "world" : $('#order_world_to_id option:selected').html()}
-        dataType: 'jsonp'
-        url: 'http://smuggler.home.pl/smuggler_ajax.php'
-        success: (json) ->
-          console.log('jsonp to success')
-          if json.result == 'success'
-            console.log('jsonp to result success')
-            char_to_exists = true
-            submitOrder()
-          else
-            console.log(json.message)
-            $('#create-order-button').prop('disabled', false)
-            $('#character-to-input').prop('disabled', false).animate({color: '#000'}, 200)
-            $('#character-to-input').css("border-color", "red").effect('highlight', {color: '#8e0000'})###
+  # Count the amount_from input value every time keyup happens on amount_to
   $('#order_amount_to').keyup ->
     if reducible
       if $('#order_amount_to').val() >= 1000000
