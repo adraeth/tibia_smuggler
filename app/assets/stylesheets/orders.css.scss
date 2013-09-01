@@ -43,3 +43,68 @@
 #final-details input {
   margin-bottom: 10px;
 }
+
+.trade-agreement {
+  position: relative;
+  width: 531px;
+  height: 234px;
+  margin: 20px auto;
+  background: image-url("agreement_background.png");
+  div {
+    position: absolute;
+  }
+  .label {
+    left: 25px;
+    width: 60px;
+  }
+  .from-line {
+    top: 63px;
+  }
+  .to-line {
+    top: 98px;
+  }
+  .status-line {
+    top: 132px;
+  }
+  .name-line {
+    top: 177px;
+    width: 220px;
+    text-align: center;
+  }
+  .name-label-line {
+    top: 203px;
+    width: 220px;
+    text-align: center;
+    font-size: 10px;
+  }
+  .align-right {
+    text-align: right;
+  }
+  .bold {
+    font-weight: bold;
+  }
+  .text-world-from {
+    left: 100px;
+  }
+  .text-amount-from {
+    left: 200px;
+    width: 150px;
+  }
+  .text-world-to {
+    left: 100px;
+  }
+  .text-amount-to {
+    left: 200px;
+    width: 150px;
+  }
+  .status-text {
+    left: 100px;
+    font-weight: bold;
+  }
+  .player-name {
+    left: 22px;
+  }
+  .smuggler-name {
+    left: 262px;
+  }
+}

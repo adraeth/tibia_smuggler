@@ -34,6 +34,18 @@ describe 'Order pages' do
     end
   end
 
+  describe 'show page' do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:order) { FactoryGirl.create(:order, user: user) }
+
+    before do
+      sign_in user
+      visit order_path(order)
+    end
+
+    it { should have_title('Order details') }
+  end
+
   describe 'order creation processing' do
 
     let(:submit) { 'Create my order' }

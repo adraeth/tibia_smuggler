@@ -6,7 +6,10 @@ describe 'User pages' do
 
   describe 'profile page' do
     let(:user) { FactoryGirl.create(:user) }
-    before { visit user_path(user) }
+    before do
+      sign_in user
+      visit user_path(user)
+    end
 
     it { should have_title(user.name) }
   end
@@ -54,7 +57,7 @@ describe 'User pages' do
 
       describe 'after saving the user' do
         before { click_button submit }
-        let(:user) { User.find_by_email('user@example.com') }
+        let(:user) { User.find_by(email: 'user@example.com') }
 
         it { should have_title(user.name) }
         it { should_not have_link('Account', href: login_path) }

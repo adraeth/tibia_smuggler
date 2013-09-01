@@ -5,7 +5,7 @@ TibiaSmuggler::Application.routes.draw do
   resources :users, except: :new
   resources :sessions, only: [:create, :destroy]
   resources :rates, only: [:show]
-  resources :orders, only: [:new, :create, :show]
+  resources :orders, only: [:new, :create, :index, :show]
 
   root to: 'orders#new'
 

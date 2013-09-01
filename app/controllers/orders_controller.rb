@@ -1,10 +1,8 @@
 class OrdersController < ApplicationController
 
-  before_filter :get_news, only: [:new, :create]
-
-  def get_news
-    @news = News.visible.latest
-  end
+  before_action :get_news, only: [:new, :create]
+  before_action :signed_in_user, only: [:index, :show]
+  before_action :correct_user, only: :show
 
   def new
     @order = Order.new
@@ -27,6 +25,10 @@ class OrdersController < ApplicationController
     end
   end
 
+  def index
+    @orders = Order.where(user: current_user)
+  end
+
   def show
 
   end
@@ -39,4 +41,19 @@ class OrdersController < ApplicationController
       #failure
     end
   end
+
+    private
+
+    def get_news
+      @news = News.visible.latest
+    end
+
+    def signed_in_user
+      redirect_to login_url, notice: 'Please log in.' unless signed_in?
+    end
+
+    def correct_user
+      @order = Order.find(params[:id])
+      redirect_to(root_url) unless current_user?(@order.user)
+    end
 end

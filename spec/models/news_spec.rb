@@ -5,7 +5,7 @@
 #  id           :integer          not null, primary key
 #  date_to_show :datetime
 #  title        :string(255)
-#  content      :text(1000)
+#  content      :text
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #

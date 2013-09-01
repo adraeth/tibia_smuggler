@@ -6,7 +6,7 @@ module SessionsHelper
 
   def user_for(email)
     if login_by_email? email
-      User.find_by_email(params[:session][:email].downcase)
+      User.find_by(email: params[:session][:email].downcase)
     else
       Rails.env.production? ? query = 'name ILIKE ?' : query = 'name LIKE ?'
       User.where(query, params[:session][:email]).first
@@ -27,7 +27,11 @@ module SessionsHelper
   end
 
   def current_user
-    @current_user ||= User.find_by_remember_token(cookies[:remember_token])
+    @current_user ||= User.find_by(remember_token: cookies[:remember_token])
+  end
+
+  def current_user?(user)
+    user == current_user
   end
 
   def sign_out

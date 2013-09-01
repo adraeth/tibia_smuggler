@@ -1,0 +1,27 @@
+<% provide(:title, 'My orders') %>
+<% @orders.each do |order| %>
+    <div class="trade-agreement">
+      <div class="from-line label align-right">From:</div>
+      <div class="text-world-from from-line bold"><%= order.world_from.name %></div>
+      <div class="text-amount-from from-line align-right bold">
+        <%= number_with_delimiter(order.amount_from, delimiter: ' ') %> gp
+      </div>
+      <div class="to-line label align-right">To:</div>
+      <div class="text-world-to to-line bold"><%= order.world_to.name %></div>
+      <div class="text-amount-to to-line align-right bold">
+        <%= number_with_delimiter(order.amount_to, delimiter: ' ') %> gp
+      </div>
+      <div class="status-line label align-right">Status:</div>
+      <div class="status-line status-text">Accepted - please send gold.</div>
+      <div class="name-line player-name">
+        <%= link_to order.character_from,
+                    "http://www.tibia.com/community/?subtopic=characters&amp;name=#{order.character_from}".html_safe %>
+      </div>
+      <div class="name-line smuggler-name">
+        <%= link_to "Gold Smuggler #{order.world_to.name}",
+                    "http://www.tibia.com/community/?subtopic=characters&amp;name=Gold+Smuggler+#{order.world_to.name}".html_safe %>
+      </div>
+      <div class="name-label-line player-name">Your Tibia character</div>
+      <div class="name-label-line smuggler-name">Smuggler's character</div>
+    </div>
+<% end %>
