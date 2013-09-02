@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.where(user: current_user)
+    @orders = current_user.orders.includes(:user, :order_status, :world_to, :world_from)
   end
 
   def show
