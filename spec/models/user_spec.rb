@@ -34,6 +34,8 @@ describe User do
     it { should respond_to(:permissions) }
     it { should respond_to(:assignments) }
     it { should respond_to(:orders) }
+    it { should respond_to(:can_accept_orders?) }
+    it { should respond_to(:can_process_orders?) }
   end
 
   it { should be_valid }

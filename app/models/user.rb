@@ -49,6 +49,14 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  def can_accept_orders?
+    permissions.where(name: 'can_accept_orders').any?
+  end
+
+  def can_process_orders?
+    permissions.where(name: 'can_process_orders').any?
+  end
+
   private
 
   def create_remember_token
