@@ -73,6 +73,7 @@ describe 'Order pages' do
       describe 'with valid order information' do
 
         before do
+          FactoryGirl.create(:order_status)
           within 'form#new_order' do
             fill_in 'order_amount_to',                              with: 50000
             fill_in 'character-from-input',                         with: 'Korni'

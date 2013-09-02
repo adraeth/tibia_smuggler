@@ -12,7 +12,7 @@
         <%= number_with_delimiter(order.amount_to, delimiter: ' ') %> gp
       </div>
       <div class="status-line label align-right">Status:</div>
-      <div class="status-line status-text">Accepted - please send gold.</div>
+      <div class="status-line status-text"><%= order.order_status.text %></div>
       <div class="name-line player-name">
         <%= link_to order.character_from,
                     "http://www.tibia.com/community/?subtopic=characters&amp;name=#{order.character_from}".html_safe %>
@@ -23,5 +23,21 @@
       </div>
       <div class="name-label-line player-name">Your Tibia character</div>
       <div class="name-label-line smuggler-name">Smuggler's character</div>
+    </div>
+    <div class="trade-agreement-buttons">
+      <% if order.order_status_id == 2 %>
+          <div class="confirm-parcel">
+            Please click the button below once you have sent your parcel to our Tibia character:
+            <%= link_to 'I have sent the parcel', order_path(order),
+                        class: 'smuggler-button as-link', confirm: "Click OK if you are sure you have sent the parcel, or 'cancel' if not." %>
+          </div>
+      <% end %>
+      <% if order.order_status_id.between?(1,2) %>
+          <div class="cancel-order">
+            Click to cancel your order:
+            <%= link_to 'Cancel order', order_path(order), class: 'smuggler-button as-link',
+                        confirm: 'Are you sure you want to remove your order?' %>
+          </div>
+      <% end %>
     </div>
 <% end %>

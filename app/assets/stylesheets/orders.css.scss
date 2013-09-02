@@ -48,7 +48,9 @@
   position: relative;
   width: 531px;
   height: 234px;
-  margin: 20px auto;
+  float: left;
+  margin-top: 20px;
+  margin-left: 100px;
   background: image-url("agreement_background.png");
   div {
     position: absolute;
@@ -99,12 +101,28 @@
   }
   .status-text {
     left: 100px;
+    padding-top: 4px;
     font-weight: bold;
+    font-size: 12px;
   }
   .player-name {
     left: 22px;
   }
   .smuggler-name {
     left: 262px;
+  }
+}
+.trade-agreement-buttons {
+  height: 234px;
+  width: 200px;
+  float: left;
+  margin-top: 10px;
+  margin-left: 20px;
+  font-size: 14px;
+  div {
+    margin-top: 20px
+  }
+  .smuggler-button {
+    margin-top: 10px;
   }
 }
