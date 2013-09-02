@@ -1,3 +1,9 @@
+OrderStatus.create(text: 'Pending - please wait.')
+OrderStatus.create(text: 'Accepted - please send gold.')
+OrderStatus.create(text: 'Processing - please wait.')
+OrderStatus.create(text: 'Completed - check your inbox.')
+OrderStatus.create(text: 'Rejected - ')
+
 Permission.create(name: 'can_confirm_orders')
 Permission.create(name: 'can_process_orders')
 Permission.create(name: 'can_view_stats')
