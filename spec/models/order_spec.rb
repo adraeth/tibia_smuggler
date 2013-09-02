@@ -44,6 +44,10 @@ describe Order do
     it { should respond_to(:received_at) }
     it { should respond_to(:completed_at) }
     it { should respond_to(:rejected_at) }
+    it { should respond_to(:accept) }
+    it { should respond_to(:confirm_parcel) }
+    it { should respond_to(:complete) }
+    it { should respond_to(:reject) }
   end
 
   it { should be_valid }

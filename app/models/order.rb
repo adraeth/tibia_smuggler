@@ -45,12 +45,55 @@ class Order < ActiveRecord::Base
   validates :world_to, presence: true
   validate  :world_from_and_to_must_differ
 
+  scope :recent, -> { where("created_at >= '#{ 10.days.ago }'") }
+
   def calculate_amount_from
     return false unless world_from.present? and world_to.present? and amount_to.present?
     applied_rate = Rate.where(from_world_type_id: world_from.world_type, to_world_type_id: world_to.world_type).first
     rate_value = applied_rate.rate - applied_rate.reduction_step * rate_reduction_multiplier
     self.amount_from = amount_to * (1 + rate_value + world_to.rate - world_from.rate) # TODO: Think how it influences negative base_rate
     self.amount_from = amount_from.round(-2)
+  end
+
+  def accept
+    ActiveRecord::Base.transaction do
+      self.reload
+      return false if order_status_id != 1
+      self.order_status_id = 2
+      self.accepted_at = Time.now
+      self.save
+    end
+  end
+
+  def confirm_parcel
+    ActiveRecord::Base.transaction do
+      self.reload
+      return false if order_status_id != 2
+      self.order_status_id = 3
+      self.received_at = Time.now
+      self.save
+    end
+  end
+
+  def complete
+    ActiveRecord::Base.transaction do
+      self.reload
+      return false if order_status_id != 3
+      self.order_status_id = 4
+      self.completed_at = Time.now
+      self.save
+    end
+  end
+
+  def reject(message = 'rejected by admin.')
+    ActiveRecord::Base.transaction do
+      self.reload
+      return false unless (1..4).cover? order_status_id
+      self.order_status_id = 5
+      self.rejected_at = Time.now
+      self.rejection_reason = message
+      self.save
+    end
   end
 
   private
