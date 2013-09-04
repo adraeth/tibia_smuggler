@@ -30,6 +30,8 @@ class Order < ActiveRecord::Base
   attr_accessible :amount_to, :character_from, :character_to, :world_from_id, :world_to_id # TODO: Fragile parameters exposed!
 
   before_create :calculate_amount_from
+  before_create :check_world_locks
+  before_create :lock_amount_to
   before_create :apply_status
 
   after_create :send_creation_email
@@ -46,6 +48,7 @@ class Order < ActiveRecord::Base
   validate  :world_from_and_to_must_differ
 
   scope :recent, -> { where("created_at >= '#{ 10.days.ago }'") }
+  default_scope { order('created_at desc') }
 
   def calculate_amount_from
     return false unless world_from.present? and world_to.present? and amount_to.present?
@@ -53,6 +56,11 @@ class Order < ActiveRecord::Base
     rate_value = applied_rate.rate - applied_rate.reduction_step * rate_reduction_multiplier
     self.amount_from = amount_to * (1 + rate_value + world_to.rate - world_from.rate) # TODO: Think how it influences negative base_rate
     self.amount_from = amount_from.round(-2)
+  end
+
+  def check_world_locks
+    return false if world_from.blocked_for_outgoing || world_to.blocked_for_incoming
+    true
   end
 
   def accept
@@ -63,6 +71,7 @@ class Order < ActiveRecord::Base
       self.accepted_at = Time.now
       self.save
     end
+    send_acceptation_email
   end
 
   def confirm_parcel
@@ -73,6 +82,7 @@ class Order < ActiveRecord::Base
       self.received_at = Time.now
       self.save
     end
+    send_parcel_confirmation_email
   end
 
   def complete
@@ -83,20 +93,33 @@ class Order < ActiveRecord::Base
       self.completed_at = Time.now
       self.save
     end
+    send_completion_email
   end
 
-  def reject(message = 'rejected by admin.')
+  def destroy(message = 'cancelled by user.')
     ActiveRecord::Base.transaction do
       self.reload
       return false unless (1..4).cover? order_status_id
       self.order_status_id = 5
       self.rejected_at = Time.now
       self.rejection_reason = message
+      unlock_amount_to
       self.save
     end
+    send_rejection_email
   end
 
   private
+
+    def lock_amount_to
+      world_to.amount -= amount_to
+      world_to.save
+    end
+
+    def unlock_amount_to
+      world_to.amount += amount_to
+      world_to.save
+    end
 
     def rate_reduction_multiplier
       return 0 unless amount_to.present?
@@ -116,5 +139,21 @@ class Order < ActiveRecord::Base
 
     def send_creation_email
       OrderMailer.order_created_email(self).deliver
+    end
+
+    def send_acceptation_email
+      OrderMailer.order_accepted_email(self).deliver
+    end
+
+    def send_parcel_confirmation_email
+      OrderMailer.parcel_confirmed_email(self).deliver
+    end
+
+    def send_completion_email
+      OrderMailer.order_completed_email(self).deliver
+    end
+
+    def send_rejection_email
+      OrderMailer.order_rejected_email(self).deliver
     end
 end

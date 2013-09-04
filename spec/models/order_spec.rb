@@ -47,7 +47,6 @@ describe Order do
     it { should respond_to(:accept) }
     it { should respond_to(:confirm_parcel) }
     it { should respond_to(:complete) }
-    it { should respond_to(:reject) }
   end
 
   it { should be_valid }
