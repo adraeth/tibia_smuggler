@@ -21,7 +21,7 @@ class World < ActiveRecord::Base
   attr_accessible :account, :amount, :blocked_for_incoming, :blocked_for_outgoing, :location, :name, :rate, :world_type
 
   validates :account, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
-  validates :amount, numericality: true
+  validates :amount, numericality: { greater_than_or_equal_to: 0 }
   validates :blocked_for_incoming, inclusion: [true, false]
   validates :blocked_for_outgoing, inclusion: [true, false]
   validates :location, inclusion: %w[EU US]
