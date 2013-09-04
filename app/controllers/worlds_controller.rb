@@ -17,4 +17,9 @@ class WorldsController < ApplicationController
 
   def destroy
   end
+
+  def check_availability
+    hash = get_locks_and_max_amount_for(params)
+    render json: hash
+  end
 end

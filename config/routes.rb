@@ -5,7 +5,7 @@ TibiaSmuggler::Application.routes.draw do
   resources :users, except: :new
   resources :sessions, only: [:create, :destroy]
   resources :rates, only: [:show]
-  resources :orders, only: [:new, :create, :index, :show]
+  resources :orders, only: [:new, :create, :index, :show, :destroy]
 
   root to: 'orders#new'
 
@@ -16,6 +16,7 @@ TibiaSmuggler::Application.routes.draw do
   get '/news/:id/:string',            to: 'news#show', as: 'titled_news'
   get '/referrer/:referrer',          to: 'referrers#save', as: 'refer_to'
   get '/rates/:from_world/:to_world', to: 'rates#show'
-  match '/confirm_order',             to: 'orders#create', as: 'confirm_order', via: [:get]
+  get '/confirm_order',               to: 'orders#create', as: 'confirm_order'
+  get '/worlds/:from_world/:to_world',to: 'worlds#check_availability'
 
 end

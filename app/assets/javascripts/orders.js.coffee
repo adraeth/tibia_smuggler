@@ -10,6 +10,9 @@ $(document).ready ->
 
   # Initial variables
   step = 1
+  from_locked = true
+  to_locked = true
+  max_amount = 0
   rate = 0.0
   reducible = false
   reduction_step = 0.0
@@ -120,12 +123,28 @@ $(document).ready ->
               $('#rate-reduction-teaser span:nth(2)').html(reduction_step*100*3)
             $('#amount-picker img').hide()
             $('#previous-button').fadeIn()
+        $.ajax
+          type: 'get'
+          url: "/worlds/#{$('#order_world_from_id option:selected').val()}/#{$('#order_world_to_id option:selected').val()}"
+          success: (json) ->
+            from_locked = json.from_locked
+            to_locked = json.to_locked
+            max_amount = json.to_max
         step++
       when 2
         if $('#order_amount_to').val() < 10000
           $('#order_amount_to').val(10000)
           $('#order_amount_to').keyup()
           $('#order_amount_to').hide().effect('highlight', {color: '#8e0000'})
+          break
+        if from_locked
+          alert('The world you want to transfer from is currently locked for outgoing transfers.')
+          break
+        if to_locked
+          alert('The world you want to transfer to is currently locked for incoming transfers.')
+          break
+        if $('#order_amount_to').val() > max_amount
+          alert('We only have ' + max_amount + ' gold on the destination game world.')
           break
         $('#step-indicator div:nth-child(3)').animate({color: '#aaa'}, 400, ->
           $('#step-indicator div:nth-child(5)').animate({color: '#282828'}, 400))

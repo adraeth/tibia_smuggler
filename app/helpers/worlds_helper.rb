@@ -25,4 +25,13 @@ module WorldsHelper
   def tibia_com_link_for(world)
     link_to world.name, "http://www.tibia.com/community/?subtopic=worlds&world=#{world.name}"
   end
+
+  def get_locks_and_max_amount_for(params)
+    from_locked = World.find(params[:from_world]).blocked_for_outgoing
+    to_locked = World.find(params[:to_world]).blocked_for_incoming
+    to_max = World.find(params[:to_world]).amount
+    {from_locked: from_locked, to_locked: to_locked, to_max: to_max}
+    rescue
+    {}
+  end
 end

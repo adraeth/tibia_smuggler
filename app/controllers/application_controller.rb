@@ -3,4 +3,5 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include ReferrersHelper
   include RatesHelper
+  include WorldsHelper
 end
