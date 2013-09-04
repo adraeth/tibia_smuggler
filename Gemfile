@@ -5,7 +5,7 @@ gem 'rails', '4.0.0'
 gem 'multi_json', '1.7.8'
 gem 'therubyracer', platforms: :ruby
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'jquery-rails', '2.2.1'
+gem 'jquery-rails', '3.0.4'
 gem 'jquery-ui-rails', '4.0.4'
 gem 'protected_attributes', '1.0.3'
 gem 'sass-rails',   '4.0.0'
