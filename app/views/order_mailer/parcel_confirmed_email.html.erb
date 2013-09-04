@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+<h1>Hello, <%= @order.user.name %>!</h1>
+<p>
+  You have confirmed sending a parcel to Gold Smuggler <%= @order.world_from %>.
+</p>
+<p>
+  Your parcel will now be verified by our staff.<br />
+  If everything is correct, we will send <b><%= number_with_delimiter(@order.amount_to, delimiter: ' ') %></b> gold to <b><%= @order.character_to %></b><br />
+  Should there be any problem with your parcel (for example the amount of gold is incorrect), we will contact you by email.
+</p>
+<p>
+  Verifying the parcel can take up to 24 hours (but will usually take much less).
+</p>
+<p>
+  Yours,<br />
+  Tibia ML Smuggler Team
+</p>
+</body>
+</html>
