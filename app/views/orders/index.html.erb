@@ -26,18 +26,18 @@
     </div>
     <div class="trade-agreement-buttons">
       <% if order.order_status_id == 2 %>
-          <div class="confirm-parcel">
-            Please click the button below once you have sent your parcel to our Tibia character:
-            <%= link_to 'I have sent the parcel', order_path(order),
-                        class: 'smuggler-button as-link', confirm: "Click OK if you are sure you have sent the parcel, or 'cancel' if not." %>
-          </div>
+        <div>
+          Please click the button below once you have sent your parcel to our Tibia character:
+          <%= link_to 'I have sent the parcel', order_path(order),
+                      class: 'smuggler-button as-link', data: { confirm: "Click OK if you are sure you have sent the parcel, or 'cancel' if not." } %>
+        </div>
       <% end %>
       <% if order.order_status_id.between?(1,2) %>
-          <div class="cancel-order">
-            Click to cancel your order:
-            <%= link_to 'Cancel order', order_path(order), class: 'smuggler-button as-link',
-                        confirm: 'Are you sure you want to remove your order?' %>
-          </div>
+        <div>
+          Click to cancel the order:
+          <%= button_to 'Cancel order', order, method: :delete, class: 'smuggler-button',
+                        data: { confirm: 'Are you sure you want to remove your order?' } %>
+        </div>
       <% end %>
     </div>
 <% end %>

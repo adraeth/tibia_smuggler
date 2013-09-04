@@ -86,6 +86,16 @@ describe 'Order pages' do
         it 'should create an order' do
           expect { click_button submit }.to change(Order, :count).by(1)
         end
+
+        describe 'should display information about necessary confirmation' do
+          before { click_button submit }
+          it { should have_selector('div.flash-info', text: 'Please wait for your order to be accepted by our staff.')}
+        end
+
+        describe 'should not show Smuggler character name' do
+          before { click_button submit }
+          it { should_not have_selector('a', text: 'Gold Smuggler Celesta') }
+        end
       end
     end
     describe 'when user is not logged in' do

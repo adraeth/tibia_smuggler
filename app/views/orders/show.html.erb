@@ -1,4 +1,7 @@
 <%= provide(:title, 'Order details') %>
+<% if @order.order_status_id == 1 %>
+  <div class="flash-info">Please wait for your order to be accepted by our staff.</div>
+<% end %>
 <div class="trade-agreement">
   <div class="from-line label align-right">From:</div>
   <div class="text-world-from from-line bold"><%= @order.world_from.name %></div>
@@ -17,8 +20,7 @@
                 "http://www.tibia.com/community/?subtopic=characters&amp;name=#{@order.character_from}".html_safe %>
   </div>
   <div class="name-line smuggler-name">
-    <%= link_to "Gold Smuggler #{@order.world_to.name}",
-                "http://www.tibia.com/community/?subtopic=characters&amp;name=Gold+Smuggler+#{@order.world_to.name}".html_safe %>
+    <%= get_smuggler_charname %>
   </div>
   <div class="name-label-line player-name">Your Tibia character</div>
   <div class="name-label-line smuggler-name">Smuggler's character</div>
@@ -34,7 +36,7 @@
   <% if @order.order_status_id.between?(1,2) %>
     <div>
       Click to cancel the order:
-      <%= link_to 'Cancel order', order_path(@order), class: 'smuggler-button as-link',
+      <%= button_to 'Cancel order', @order, method: :delete, class: 'smuggler-button',
                     data: { confirm: 'Are you sure you want to remove your order?' } %>
     </div>
   <% end %>
