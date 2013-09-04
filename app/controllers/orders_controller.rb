@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController
 
   before_action :get_news, only: [:new, :create]
-  before_action :signed_in_user, only: [:index, :show]
-  before_action :correct_user, only: :show
+  before_action :signed_in_user, only: [:index, :show, :destroy]
+  before_action :correct_user, only: [:show, :destroy]
 
   def new
     @order = Order.new
@@ -33,13 +33,9 @@ class OrdersController < ApplicationController
 
   end
 
-  def update
-    @order = Order.find(params[:id])
-    if @order.update_attributes(params[:order].except(:world_from_id, :world_to_id))
-      #success
-    else
-      #failure
-    end
+  def destroy
+    @order.destroy
+    render 'show'
   end
 
     private
