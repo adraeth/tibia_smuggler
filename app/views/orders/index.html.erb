@@ -12,7 +12,7 @@
         <%= number_with_delimiter(order.amount_to, delimiter: ' ') %> gp
       </div>
       <div class="status-line label align-right">Status:</div>
-      <div class="status-line status-text"><%= order.order_status.text %></div>
+      <div class="status-line status-text"><%= get_order_status_for(order) %></div>
       <div class="name-line player-name">
         <%= link_to order.character_from,
                     "http://www.tibia.com/community/?subtopic=characters&amp;name=#{order.character_from}".html_safe %>
@@ -37,6 +37,11 @@
           Click to cancel the order:
           <%= button_to 'Cancel order', order, method: :delete, class: 'smuggler-button',
                         data: { confirm: 'Are you sure you want to remove your order?' } %>
+        </div>
+      <% end %>
+      <% if order.order_status_id > 2 %>
+        <div>
+          No actions available.
         </div>
       <% end %>
     </div>

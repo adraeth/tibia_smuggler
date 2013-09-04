@@ -96,7 +96,7 @@ class Order < ActiveRecord::Base
     send_completion_email
   end
 
-  def destroy(message = 'cancelled by user.')
+  def destroy(message = 'cancelled by user')
     ActiveRecord::Base.transaction do
       self.reload
       return false unless (1..4).cover? order_status_id
