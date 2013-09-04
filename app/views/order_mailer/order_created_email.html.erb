@@ -4,15 +4,15 @@
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 </head>
 <body>
-<h1>Hello, <%= @order.user.name %>!</h1>
+<b>Hello, <%= @order.user.name %>!</b>
 <p>
   You have successfully ordered a world trade in our service. However, your order has to be verified by our staff first.<br />
-  Once we accept your order, you will receive another email containing all necessary details, including the name
-  of our tool character on <%= @order.world_from %> to which you should then send a parcel with your gold.
+  Once we accept your order, you will receive another email containing all necessary details, including the name<br />
+  of our tool character on <%= @order.world_from.name %> to which you should then send a parcel with your gold.
 </p>
 <p>
-  The details of your order can also be found <%= link_to 'here', order_path(@order) %>. Keep in mind that the name
-  of our tool character will be hidden until the order is accepted by our staff.
+  The details of your order can also be found <%= link_to 'here', order_url(@order) %>.<br />
+  Please keep in mind that the name of our tool character will be hidden until the order is accepted by our staff.
 </p>
 <p>
   Verifying the order should not take longer than few hours (and can as well take just one minute).

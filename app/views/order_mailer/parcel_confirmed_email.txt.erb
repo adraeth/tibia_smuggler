@@ -1,6 +1,6 @@
 Hello, <%= @order.user.name %>!
 
-You have confirmed sending a parcel to Gold Smuggler <%= @order.world_from %>.
+You have confirmed sending a parcel to Gold Smuggler <%= @order.world_from.name %>.
 
 Your parcel will now be verified by our staff.
 If everything is correct, we will send <%= number_with_delimiter(@order.amount_to, delimiter: ' ') %> gold to <%= @order.character_to %>

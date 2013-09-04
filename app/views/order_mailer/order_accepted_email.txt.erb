@@ -5,11 +5,11 @@ We are happy to inform you that your world trade order was accepted!
 Please remember that the gold should always be sent in a parcel.
 Sending gold via bank can make it very hard for us to identify the transfer!
 
-Please send <%= number_with_delimiter(@order.amount_from, delimiter: ' ') %> gold to Gold Smuggler <%= @order.world_from %>.
+Please send <%= number_with_delimiter(@order.amount_from, delimiter: ' ') %> gold to Gold Smuggler <%= @order.world_from.name %>.
 Please note that it is enough to only put our character name in the label, you no longer have to specify the city name.
 However, if you are unsure about it, you can put any city name in your label, for example "Thais".
 
-When we receive your parcel, we will send <%= number_with_delimiter(@order.amount_to, delimiter: ' ') %> gold to <%= @order.character_to %>
+When we receive your parcel, we will send <%= number_with_delimiter(@order.amount_to, delimiter: ' ') %> gold to <%= @order.character_to %>.
 
 Yours,
 Tibia ML Smuggler Team

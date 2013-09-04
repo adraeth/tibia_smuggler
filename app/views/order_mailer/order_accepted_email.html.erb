@@ -4,7 +4,7 @@
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 </head>
 <body>
-<h1>Hello, <%= @order.user.name %>!</h1>
+<b>Hello, <%= @order.user.name %>!</b>
 <p>
   We are happy to inform you that your world trade order was accepted!
 </p>
@@ -13,12 +13,12 @@
   Sending gold via bank can make it very hard for us to identify the transfer!
 </p>
 <p>
-  Please send <b><%= number_with_delimiter(@order.amount_from, delimiter: ' ') %></b> gold to <b>Gold Smuggler <%= @order.world_from %>.</b><br />
+  Please send <b><%= number_with_delimiter(@order.amount_from, delimiter: ' ') %></b> gold to <b>Gold Smuggler <%= @order.world_from.name %>.</b><br />
   Please note that it is enough to only put our character name in the label, you no longer have to specify the city name.<br />
   However, if you are unsure about it, you can put any city name in your label, for example "Thais".
 </p>
 <p>
-  When we receive your parcel, we will send <b><%= number_with_delimiter(@order.amount_to, delimiter: ' ') %></b> gold to <b><%= @order.character_to %></b>
+  When we receive your parcel, we will send <b><%= number_with_delimiter(@order.amount_to, delimiter: ' ') %></b> gold to <b><%= @order.character_to %>.</b>
 </p>
 <p>
   Yours,<br />

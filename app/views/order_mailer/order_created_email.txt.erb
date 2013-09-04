@@ -2,7 +2,7 @@ Hello, <%= @order.user.name %>!
 
 You have successfully ordered a world trade in our service. However, your order has to be verified by our staff first.
 Once we accept your order, you will receive another email containing all necessary details, including the name
-of our tool character on <%= @order.world_from %> to which you should then send a parcel with your gold.
+of our tool character on <%= @order.world_from.name %> to which you should then send a parcel with your gold.
 
 The details of your order can also be found on our website. The link to your order is:
 <%= order_url(@order) %>
