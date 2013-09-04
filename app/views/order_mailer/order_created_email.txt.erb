@@ -1,7 +1,14 @@
-Hello, <%= @order.user.name %>
-===============================================
+Hello, <%= @order.user.name %>!
 
-You have created an order in our system.
+You have successfully ordered a world trade in our service. However, your order has to be verified by our staff first.
+Once we accept your order, you will receive another email containing all necessary details, including the name
+of our tool character on <%= @order.world_from %> to which you should then send a parcel with your gold.
+
+The details of your order can also be found on our website. The link to your order is:
+<%= order_url(@order) %>
+Please keep in mind that the name of our tool character will be hidden until the order is accepted by our staff.
+
+Verifying the order should not take longer than few hours (and can as well take just one minute).
 
 Yours,
 Tibia Smuggler Team
