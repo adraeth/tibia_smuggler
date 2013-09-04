@@ -49,10 +49,6 @@ class OrdersController < ApplicationController
       @news = News.visible.latest
     end
 
-    def signed_in_user
-      redirect_to login_url, notice: 'Please log in.' unless signed_in?
-    end
-
     def correct_user
       @order = Order.find(params[:id])
       redirect_to(root_url) unless current_user?(@order.user)

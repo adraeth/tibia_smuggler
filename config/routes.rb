@@ -9,6 +9,10 @@ TibiaSmuggler::Application.routes.draw do
 
   root to: 'orders#new'
 
+  namespace :admin do
+    get '', to: 'dashboard#index', as: '/'
+  end
+
   get '/login',                       to: 'sessions#new', as: 'login'
   match '/logout',                    to: 'sessions#destroy', via: :delete
   get '/help',                        to: 'static_pages#help'
