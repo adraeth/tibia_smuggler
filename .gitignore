@@ -22,3 +22,6 @@
 
 # Ignore App.config.secret_key_base file
 /.secret
+
+# Ignore public/assets
+/public/assets
