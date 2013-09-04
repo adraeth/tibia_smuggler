@@ -1,0 +1,10 @@
+Hello, <%= @order.user.name %>!
+
+The status of your order was changed to "rejected".
+<% if @order.rejection_reason %>
+  The reason for it was: <%= @order.rejection_reason %>
+<% end %>
+If you still want to move your gold to another game world, please create another order.
+
+Yours,
+Tibia Smuggler Team

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+<h1>Hello, <%= @order.user.name %>!</h1>
+<p>
+  The status of your order was changed to "rejected".<br />
+  <% if @order.rejection_reason %>
+    The reason for it was: <b><%= @order.rejection_reason %></b>
+  <% end %>
+</p>
+<p>
+  If you still want to move your gold to another game world, please create another order.
+</p>
+<p>
+  Yours,<br />
+  Tibia ML Smuggler Team
+</p>
+</body>
+</html>
