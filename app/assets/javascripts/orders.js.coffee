@@ -42,12 +42,14 @@ $(document).ready ->
           else
             console.log(json.message)
             $('#create-order-button').prop('disabled', false)
-            $('#character-from-input').prop('disabled', false).animate({color: '#000'}, 200)
+            $('#character-from-input').prop('disabled', false).css('color', '#000')
+            console.log('Trigger error highlighting for character-from')
+            $('#character-from-input').css("border-color", "red").hide().effect('highlight', {color: '#8e0000'})
     else
       console.log('Character-from did not match regex.')
       $('#create-order-button').prop('disabled', false)
-    console.log('Trigger error highlighting for character-from')
-    $('#character-from-input').css("border-color", "red").hide().effect('highlight', {color: '#8e0000'})
+      console.log('Trigger error highlighting for character-from')
+      $('#character-from-input').css("border-color", "red").hide().effect('highlight', {color: '#8e0000'})
 
   # Character-to input validation
   validateCharacterTo = ->
@@ -71,12 +73,14 @@ $(document).ready ->
           else
             console.log(json.message)
             $('#create-order-button').prop('disabled', false)
-            $('#character-to-input').prop('disabled', false).animate({color: '#000'}, 200)
+            $('#character-to-input').prop('disabled', false).css('color', '#000')
+            console.log('Trigger error highlighting for character-to')
+            $('#character-to-input').css("border-color", "red").hide().effect('highlight', {color: '#8e0000'})
     else
       console.log('Character-to did not match regex.')
       $('#create-order-button').prop('disabled', false)
-    console.log('Trigger error highlighting for character-to')
-    $('#character-to-input').css("border-color", "red").hide().effect('highlight', {color: '#8e0000'})
+      console.log('Trigger error highlighting for character-to')
+      $('#character-to-input').css("border-color", "red").hide().effect('highlight', {color: '#8e0000'})
 
   # Called by character name input validation methods when they get their jsonp back
   # Will only submit form if both names are confirmed to exist on selected game worlds
