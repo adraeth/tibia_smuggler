@@ -95,71 +95,71 @@ World.create(name: 'Xerena',    location: 'US', account: 1, blocked_for_incoming
 World.create(name: 'Zanera',    location: 'US', account: 1, blocked_for_incoming: false, blocked_for_outgoing: false, amount: 0, rate: 0.0, world_type: open)
 
 # From Optional-PvP
-Rate.create(from_world_type:  WorldType.find_by_name('Optional-PvP'),
-            to_world_type:    WorldType.find_by_name('Optional-PvP'), rate: 0.35,
+Rate.create(from_world_type:  WorldType.find_by(name: 'Optional-PvP'),
+            to_world_type:    WorldType.find_by(name: 'Optional-PvP'), rate: 0.35,
             reducible: true, reduction_step: 0.05)
 
-Rate.create(from_world_type:  WorldType.find_by_name('Optional-PvP'),
-            to_world_type:    WorldType.find_by_name('Open-PvP'),     rate: 1.0,
-            reducible: true, reduction_step: 0.02)
+Rate.create(from_world_type:  WorldType.find_by(name: 'Optional-PvP'),
+            to_world_type:    WorldType.find_by(name: 'Open-PvP'),     rate: 0.8,
+            reducible: true, reduction_step: 0.05)
 
-Rate.create(from_world_type:  WorldType.find_by_name('Optional-PvP'),
-            to_world_type:    WorldType.find_by_name('Hardcore-PvP'), rate: 4.0,
+Rate.create(from_world_type:  WorldType.find_by(name: 'Optional-PvP'),
+            to_world_type:    WorldType.find_by(name: 'Hardcore-PvP'), rate: 2.0,
             reducible: false, reduction_step: 0.0)
 
-Rate.create(from_world_type:  WorldType.find_by_name('Optional-PvP'),
-            to_world_type:    WorldType.find_by_name('Preview'),      rate: 3.0,
+Rate.create(from_world_type:  WorldType.find_by(name: 'Optional-PvP'),
+            to_world_type:    WorldType.find_by(name: 'Preview'),      rate: 2.0,
             reducible: false, reduction_step: 0.0)
 
 # From Open-PvP
-Rate.create(from_world_type:  WorldType.find_by_name('Open-PvP'),
-            to_world_type:    WorldType.find_by_name('Optional-PvP'), rate: 0.25,
-            reducible: true, reduction_step: 0.02)
-
-Rate.create(from_world_type:  WorldType.find_by_name('Open-PvP'),
-            to_world_type:    WorldType.find_by_name('Open-PvP'),     rate: 0.35,
+Rate.create(from_world_type:  WorldType.find_by(name: 'Open-PvP'),
+            to_world_type:    WorldType.find_by(name: 'Optional-PvP'), rate: 0.3,
             reducible: true, reduction_step: 0.05)
 
-Rate.create(from_world_type:  WorldType.find_by_name('Open-PvP'),
-            to_world_type:    WorldType.find_by_name('Hardcore-PvP'), rate: 3.0,
+Rate.create(from_world_type:  WorldType.find_by(name: 'Open-PvP'),
+            to_world_type:    WorldType.find_by(name: 'Open-PvP'),     rate: 0.35,
+            reducible: true, reduction_step: 0.05)
+
+Rate.create(from_world_type:  WorldType.find_by(name: 'Open-PvP'),
+            to_world_type:    WorldType.find_by(name: 'Hardcore-PvP'), rate: 1.0,
             reducible: false, reduction_step: 0.0)
 
-Rate.create(from_world_type:  WorldType.find_by_name('Open-PvP'),
-            to_world_type:    WorldType.find_by_name('Preview'),      rate: 1.5,
+Rate.create(from_world_type:  WorldType.find_by(name: 'Open-PvP'),
+            to_world_type:    WorldType.find_by(name: 'Preview'),      rate: 1.0,
             reducible: false, reduction_step: 0.0)
 
 
 # From Hardcore-PvP
-Rate.create(from_world_type:  WorldType.find_by_name('Hardcore-PvP'),
-            to_world_type:    WorldType.find_by_name('Optional-PvP'), rate: -0.5,
+Rate.create(from_world_type:  WorldType.find_by(name: 'Hardcore-PvP'),
+            to_world_type:    WorldType.find_by(name: 'Optional-PvP'), rate: -(1.0/3.0),
             reducible: false, reduction_step: 0.0)
 
-Rate.create(from_world_type:  WorldType.find_by_name('Hardcore-PvP'),
-            to_world_type:    WorldType.find_by_name('Open-PvP'),     rate: -(1.0/3.0),
+Rate.create(from_world_type:  WorldType.find_by(name: 'Hardcore-PvP'),
+            to_world_type:    WorldType.find_by(name: 'Open-PvP'),     rate: -(1.0/5.0),
             reducible: false, reduction_step: 0.0)
 
-Rate.create(from_world_type:  WorldType.find_by_name('Hardcore-PvP'),
-            to_world_type:    WorldType.find_by_name('Hardcore-PvP'), rate: 0.25,
+Rate.create(from_world_type:  WorldType.find_by(name: 'Hardcore-PvP'),
+            to_world_type:    WorldType.find_by(name: 'Hardcore-PvP'), rate: 0.25,
             reducible: false, reduction_step: 0.0)
 
-Rate.create(from_world_type:  WorldType.find_by_name('Hardcore-PvP'),
-            to_world_type:    WorldType.find_by_name('Preview'),      rate: 0.2,
+Rate.create(from_world_type:  WorldType.find_by(name: 'Hardcore-PvP'),
+            to_world_type:    WorldType.find_by(name: 'Preview'),      rate: -(1.0/3.0),
             reducible: false, reduction_step: 0.0)
 
 
 # From Preview
-Rate.create(from_world_type:  WorldType.find_by_name('Preview'),
-            to_world_type:    WorldType.find_by_name('Optional-PvP'), rate: -(1.0/3.0),
+Rate.create(from_world_type:  WorldType.find_by(name: 'Preview'),
+            to_world_type:    WorldType.find_by(name: 'Optional-PvP'), rate: -(1.0/5.0),
             reducible: false, reduction_step: 0.0)
 
-Rate.create(from_world_type:  WorldType.find_by_name('Preview'),
-            to_world_type:    WorldType.find_by_name('Open-PvP'),     rate: 0.1,
+Rate.create(from_world_type:  WorldType.find_by(name: 'Preview'),
+            to_world_type:    WorldType.find_by(name: 'Open-PvP'),     rate: 0.0,
             reducible: false, reduction_step: 0.0)
 
-Rate.create(from_world_type:  WorldType.find_by_name('Preview'),
-            to_world_type:    WorldType.find_by_name('Hardcore-PvP'), rate: 0.5,
+Rate.create(from_world_type:  WorldType.find_by(name: 'Preview'),
+            to_world_type:    WorldType.find_by(name: 'Hardcore-PvP'), rate: 1,
             reducible: false, reduction_step: 0.0)
 
-Rate.create(from_world_type:  WorldType.find_by_name('Preview'),
-            to_world_type:    WorldType.find_by_name('Preview'),      rate: 3.0,
+Rate.create(from_world_type:  WorldType.find_by(name: 'Preview'),
+            to_world_type:    WorldType.find_by(name: 'Preview'),      rate: 0.4,
             reducible: false, reduction_step: 0.0)
