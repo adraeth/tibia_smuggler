@@ -16,4 +16,8 @@ module OrdersHelper
       '---'
     end
   end
+
+  def tibia_com_char_link_for(charname)
+    link_to charname, "http://www.tibia.com/community/?subtopic=characters&amp;#{charname.to_query('name')}".html_safe
+  end
 end

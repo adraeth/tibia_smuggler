@@ -14,8 +14,7 @@
       <div class="status-line label align-right">Status:</div>
       <div class="status-line status-text"><%= get_order_status_for(order) %></div>
       <div class="name-line player-name">
-        <%= link_to order.character_from,
-                    "http://www.tibia.com/community/?subtopic=characters&amp;name=#{order.character_from}".html_safe %>
+        <%= tibia_com_char_link_for(order.character_from) %>
       </div>
       <div class="name-line smuggler-name">
         <%= link_to "Gold Smuggler #{order.world_to.name}",

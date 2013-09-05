@@ -1,0 +1,28 @@
+<table id="admin-orders-table">
+  <thead>
+    <tr>
+      <td>Age</td>
+      <td>Username</td>
+      <td>From</td>
+      <td>To</td>
+      <td>Amount</td>
+      <td>Status</td>
+      <td>Character</td>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= time_ago_in_words(order.created_at) %></td>
+        <td><%= order.user.name %></td>
+        <td><%= order.world_from.name %></td>
+        <td><%= order.world_to.name %></td>
+        <td><%= number_with_delimiter(order.amount_to, delimiter: ' ') %></td>
+        <td><%= order.order_status.text[0..2] %></td>
+        <td><%= tibia_com_char_link_for(order.character_to) %></td>
+        <td>Action</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

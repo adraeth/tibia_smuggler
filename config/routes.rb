@@ -10,6 +10,9 @@ TibiaSmuggler::Application.routes.draw do
   root to: 'orders#new'
 
   namespace :admin do
+
+    resources :orders
+
     get '', to: 'dashboard#index', as: '/'
   end
 
