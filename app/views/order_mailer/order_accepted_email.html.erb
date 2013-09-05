@@ -18,11 +18,14 @@
   However, if you are unsure about it, you can put any city name in your label, for example "Thais".
 </p>
 <p>
+  Once you have sent the parcel, please visit your <%= link_to 'order page', order_url(@order) %> and confirm it!
+</p>
+<p>
   When we receive your parcel, we will send <b><%= number_with_delimiter(@order.amount_to, delimiter: ' ') %></b> gold to <b><%= @order.character_to %>.</b>
 </p>
 <p>
   Yours,<br />
-  Tibia ML Smuggler Team
+  Tibia Smuggler Team
 </p>
 </body>
 </html>

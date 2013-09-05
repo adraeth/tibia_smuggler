@@ -24,6 +24,7 @@
         <td>
           <% if @current_user.can_process_orders? %>
             <%= link_to '[ Complete ]', admin_complete_order_path(order), data: { confirm: 'Completed?' } if order.order_status_id == 3 %>
+            <%= link_to '[ Accept ]', admin_accept_order_path(order), data: { confirm: 'Accept?' } if order.order_status_id == 1 %>
             <%= link_to '[ Reject ]', admin_reject_order_path(order), data: { confirm: 'Reject?' } if order.order_status_id.between?(1,4) %>
             <%= 'No actions available' if order.order_status_id == 5 %>
           <% elsif @current_user.can_accept_orders? %>

@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @order.destroy
+    @order.destroy if @order.order_status_id.between?(1,2)
     render 'show'
   end
 

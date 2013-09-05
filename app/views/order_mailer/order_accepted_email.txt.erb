@@ -9,7 +9,11 @@ Please send <%= number_with_delimiter(@order.amount_from, delimiter: ' ') %> gol
 Please note that it is enough to only put our character name in the label, you no longer have to specify the city name.
 However, if you are unsure about it, you can put any city name in your label, for example "Thais".
 
+Once you have sent the parcel, please visit your order page:
+<%= order_url(@order) %>
+And confirm that you have sent a parcel to us.
+
 When we receive your parcel, we will send <%= number_with_delimiter(@order.amount_to, delimiter: ' ') %> gold to <%= @order.character_to %>.
 
 Yours,
-Tibia ML Smuggler Team
+Tibia Smuggler Team
