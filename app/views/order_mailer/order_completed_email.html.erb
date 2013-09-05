@@ -7,7 +7,7 @@
 <b>Hello, <%= @order.user.name %>!</b>
 <p>
   We are happy to inform you that your world trade order was completed!<br/>
-  Your gold can be found in the inbox of your Tibia character - <b><%= @order.character_to %></b>.
+  <%= number_with_delimiter(@order.amount_to, delimiter: ' ') %> gold was sent to the inbox of your Tibia character - <b><%= @order.character_to %></b>.
 </p>
 <p>
   If you were satisfied with our service, please recommend us to your friends!
