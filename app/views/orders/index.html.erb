@@ -28,7 +28,7 @@
       <% if order.order_status_id == 2 %>
         <div>
           Please click the button below once you have sent your parcel to our Tibia character:
-          <%= link_to 'I have sent the parcel', order_path(order),
+          <%= link_to 'I have sent the parcel', confirm_parcel_path(order),
                       class: 'smuggler-button as-link', data: { confirm: "Click OK if you are sure you have sent the parcel, or 'cancel' if not." } %>
         </div>
       <% end %>
@@ -41,7 +41,7 @@
       <% end %>
       <% if order.order_status_id > 2 %>
         <div>
-          No actions available.
+          No more actions available.
         </div>
       <% end %>
     </div>

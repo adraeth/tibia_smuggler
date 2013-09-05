@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController
 
   before_action :get_news, only: [:new, :create]
-  before_action :signed_in_user, only: [:index, :show, :destroy]
-  before_action :correct_user, only: [:show, :destroy]
+  before_action :signed_in_user, only: [:index, :show, :destroy, :confirm_parcel]
+  before_action :correct_user, only: [:show, :destroy, :confirm_parcel]
 
   def new
     @order = Order.new
@@ -31,6 +31,11 @@ class OrdersController < ApplicationController
 
   def show
 
+  end
+
+  def confirm_parcel
+    @order.confirm_parcel
+    render 'show'
   end
 
   def destroy

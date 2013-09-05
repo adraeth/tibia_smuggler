@@ -17,6 +17,7 @@ TibiaSmuggler::Application.routes.draw do
   get '/referrer/:referrer',          to: 'referrers#save', as: 'refer_to'
   get '/rates/:from_world/:to_world', to: 'rates#show'
   get '/confirm_order',               to: 'orders#create', as: 'confirm_order'
-  get '/worlds/:from_world/:to_world',to: 'worlds#check_availability'
+  get '/worlds/:from_world/:to_world',  to: 'worlds#check_availability'
+  get '/orders/:id/confirm_parcel',     to: 'orders#confirm_parcel', as:'confirm_parcel' # TODO: It should be a POST request
 
 end
