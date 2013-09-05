@@ -14,6 +14,9 @@ TibiaSmuggler::Application.routes.draw do
     resources :orders
 
     get '', to: 'dashboard#index', as: '/'
+    get '/orders/:id/accept',   to: 'orders#accept',    as: 'accept_order'
+    get '/orders/:id/complete', to: 'orders#complete',  as: 'complete_order'
+    get '/orders/:id/reject/',  to: 'orders#destroy',    as: 'reject_order'
   end
 
   get '/login',                       to: 'sessions#new', as: 'login'
