@@ -121,6 +121,11 @@ class Order < ActiveRecord::Base
       world_to.save
     end
 
+    def add_amount_from
+      world_from.amount += amount_from
+      world_from.save
+    end
+
     def rate_reduction_multiplier
       return 0 unless amount_to.present?
       return 3 if amount_to >= 1_000_000
