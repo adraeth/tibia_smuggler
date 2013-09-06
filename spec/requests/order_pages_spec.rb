@@ -15,7 +15,6 @@ describe 'Order pages' do
     it { should have_title(base_title) }
     it { should_not have_selector('title', text: '|') }
     it { should have_link('Home Page', href: root_path) }
-    it { should have_link('Order WT', href: '#') }
     it { should have_link('Gold List', href: gold_list_path) }
     it { should have_link('Help', href: help_path) }
     it { should have_selector('h2', text: 'Calculator')}

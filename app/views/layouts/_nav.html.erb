@@ -1,6 +1,5 @@
 <nav>
   <%= link_to 'Home Page', root_path %>
-  <%= link_to 'Order WT', '#' %>
   <%= link_to 'My orders', orders_path if signed_in? && current_user.orders.any? %>
   <%= link_to 'Gold List', gold_list_path %>
   <%= link_to 'Help', help_path %>

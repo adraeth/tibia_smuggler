@@ -16,7 +16,7 @@ module WorldsHelper
     else
       output << '<span class="gray">Transfers to this world are possible.</span><br />'
     end
-    if world.amount > 5_000_000 and not (world.blocked_for_incoming and world.blocked_for_outgoing)
+    if world.amount > 5_000_000 and not world.blocked_for_outgoing
     output << '<span class="orange">High transfers from this world may be rejected!</span>'
     end
     output.html_safe
