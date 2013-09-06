@@ -39,6 +39,8 @@ $(document).ready ->
             $('#character-from-input').css("border-color", "#5fb404").css("color", "#5fb404")
             submitOrder()
             return true
+          else if json.result == 'error'
+            alert(json.message)
           else
             console.log(json.message)
             $('#create-order-button').prop('disabled', false)
@@ -70,6 +72,8 @@ $(document).ready ->
             $('#character-to-input').css("border-color", "#5fb404").css("color", "#5fb404")
             submitOrder()
             return true
+          else if json.result == 'error'
+            alert(json.message)
           else
             console.log(json.message)
             $('#create-order-button').prop('disabled', false)
