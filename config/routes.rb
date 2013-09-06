@@ -11,7 +11,8 @@ TibiaSmuggler::Application.routes.draw do
 
   namespace :admin do
 
-    resources :orders
+    resources :orders, only: [:index]
+    resources :news, only: [:new, :create, :index]
 
     get '', to: 'dashboard#index', as: '/'
     get '/orders/:id/accept',   to: 'orders#accept',    as: 'accept_order'

@@ -1,0 +1,16 @@
+<div class="container-block has-fancy-inputs">
+  <div class="center-form">
+    <%= form_for(@news, url: { controller: 'admin/news', action: 'create' }) do |f| %>
+      <%= f.label :title, 'News title' %>
+      <%= f.text_field :title %>
+
+      <%= f.label :content, 'Content' %>
+      <%= f.text_area :content, { cols: 40, rows: 20 } %>
+
+      <% @news.date_to_show = Time.now %>
+      <%= datetime_field('news', 'date_to_show') %>
+
+      <%= f.submit 'Create news', class: 'smuggler-button' %>
+    <% end %>
+  </div>
+</div>

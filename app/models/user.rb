@@ -57,6 +57,10 @@ class User < ActiveRecord::Base
     permissions.where(name: 'can_process_orders').any?
   end
 
+  def can_manage_news?
+    permissions.where(name: 'can_manage_news').any?
+  end
+
   def can_access_admin_panel?
     permissions.any?
   end

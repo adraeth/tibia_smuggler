@@ -8,6 +8,7 @@ Permission.create(name: 'can_accept_orders')
 Permission.create(name: 'can_process_orders')
 Permission.create(name: 'can_view_stats')
 Permission.create(name: 'can_manage_coins')
+Permission.create(name: 'can_manage_news')
 
 opt   = WorldType.create(name: 'Optional-PvP')
 open  = WorldType.create(name: 'Open-PvP')
