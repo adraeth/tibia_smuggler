@@ -15,7 +15,7 @@ class News < ActiveRecord::Base
 
   validates :date_to_show, presence: true
   validates :title, length: { in: 5..50 }
-  validates :content, length: { in: 20..1000 }
+  validates :content, length: { in: 20..2000 }
 
   scope :visible, -> { where("date_to_show <= '#{ Time.now }'") }
   scope :latest,  -> { limit(3) }

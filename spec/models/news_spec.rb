@@ -93,7 +93,7 @@ describe News do
   end
 
   describe 'when content is too long' do
-    before { @news.content = 'a' * 1001 }
+    before { @news.content = 'a' * 2001 }
     it { should_not be_valid }
   end
 end
