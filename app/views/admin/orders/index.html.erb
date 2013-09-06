@@ -5,7 +5,8 @@
       <td>Username</td>
       <td>From</td>
       <td>To</td>
-      <td>Amount</td>
+      <td>Amount from</td>
+      <td>Amount to</td>
       <td>Status</td>
       <td>Character</td>
       <td>Actions</td>
@@ -18,6 +19,7 @@
         <td><%= order.user.name %></td>
         <td><%= order.world_from.name %></td>
         <td><%= order.world_to.name %></td>
+        <td><%= number_with_delimiter(order.amount_from, delimiter: ' ') %></td>
         <td><%= number_with_delimiter(order.amount_to, delimiter: ' ') %></td>
         <td><%= order.order_status.text[0..2] %></td>
         <td><%= tibia_com_char_link_for(order.character_to) %></td>
@@ -25,8 +27,8 @@
           <% if @current_user.can_process_orders? %>
             <%= link_to '[ Complete ]', admin_complete_order_path(order), data: { confirm: 'Completed?' } if order.order_status_id == 3 %>
             <%= link_to '[ Accept ]', admin_accept_order_path(order), data: { confirm: 'Accept?' } if order.order_status_id == 1 %>
-            <%= link_to '[ Reject ]', admin_reject_order_path(order), data: { confirm: 'Reject?' } if order.order_status_id.between?(1,4) %>
-            <%= 'No actions available' if order.order_status_id == 5 %>
+            <%= link_to '[ Reject ]', admin_reject_order_path(order), data: { confirm: 'Reject?' } if order.order_status_id.between?(1,3) %>
+            <%= 'No actions available' if order.order_status_id.between?(4,5) %>
           <% elsif @current_user.can_accept_orders? %>
             <%= link_to '[ Accept ]', admin_accept_order_path(order), data: { confirm: 'Accept?' } if order.order_status_id == 1 %>
             <%= 'No actions available' if order.order_status_id != 1 %>
