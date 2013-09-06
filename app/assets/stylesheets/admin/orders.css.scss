@@ -1,6 +1,9 @@
 #admin-orders-table {
   text-align: center;
   font-size: 14px;
+  .shadowed {
+    opacity: 0.2;
+  }
   td {
     padding: 5px 10px;
   }

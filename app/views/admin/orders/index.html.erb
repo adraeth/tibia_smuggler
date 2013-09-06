@@ -14,7 +14,11 @@
   </thead>
   <tbody>
     <% @orders.each do |order| %>
-      <tr>
+      <% if order.order_status_id > 3 %>
+        <tr class="shadowed">
+      <% else %>
+        <tr>
+      <% end %>
         <td><%= time_ago_in_words(order.created_at) %></td>
         <td><%= order.user.name %></td>
         <td><%= order.world_from.name %></td>
