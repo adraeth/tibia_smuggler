@@ -91,6 +91,7 @@ class Order < ActiveRecord::Base
       return false if order_status_id != 3
       self.order_status_id = 4
       self.completed_at = Time.now
+      add_amount_from
       self.save
     end
     send_completion_email
