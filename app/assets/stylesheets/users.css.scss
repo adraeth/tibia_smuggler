@@ -1,5 +1,29 @@
-#profile-menu {
-  button, a {
-    margin: 15px 15px 0px;
+.user-button {
+  width: 130px;
+  float: right;
+  margin-right: 20px;
+}
+.rounded-square {
+  width: 411px;
+  min-height: 280px;
+  float: left;
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #afafaf;
+  border-radius: 5px;
+  h2 {
+    margin-top: 0px;
+    margin-bottom: 15px;
+    font-size: 20px;
   }
+  td {
+    padding: 5px 10px;
+  }
+  .bold {
+    font-weight: bold;
+  }
+}
+.lots-of-text {
+  font-size: 14px;
+  text-align: justify;
 }

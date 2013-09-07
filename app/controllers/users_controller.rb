@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :signed_in_user, only: :show
-  before_action :correct_user, only: :show
+  before_action :signed_in_user, only: [:show, :update]
+  before_action :correct_user, only: [:show, :update]
 
   def create
     @user = User.new(params[:user])
@@ -19,6 +19,19 @@ class UsersController < ApplicationController
   end
 
   def show
+    @orders = current_user.orders.to_a
+  end
+
+  def update
+    if @user.update_attributes(params[:user].except!(:name))
+      sign_in(@user)
+      flash[:info] = 'Your profile was successfully updated.'
+      redirect_to @user
+    else
+      flash.now[:error] = 'Please enter a correct email and password (you can re-type your old password)'
+      @orders = current_user.orders.to_a
+      render 'users/show'
+    end
   end
 
     private

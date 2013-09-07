@@ -171,6 +171,7 @@ nav {
   display: block;
   height: 30px;
   width: 228px;
+  margin: 0 auto;
   padding: 10px;
   font-size: 20px;
   border:  1px solid #333333;
@@ -189,6 +190,28 @@ nav {
     }
   }
 }
+
+.but-tiny-inputs {
+  input {
+    height: 20px;
+    width: 186px;
+    padding: 6px;
+    margin-top: 5px;
+    font-size: 14px;
+    &[type=submit] {
+      height: 40px;
+      width: 186px;
+      margin-top: 10px;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+  label {
+    font-size: 14px;
+  }
+}
+
 .has-fancy-inputs select {
   display: block;
   height: 50px;
