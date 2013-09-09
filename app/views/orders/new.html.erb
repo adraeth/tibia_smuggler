@@ -37,7 +37,7 @@
       <div id="amount-picker" class="initially-hidden">
         <%= image_tag('ajax-loader.gif', alt: 'Loading rate for selected worlds...') %>
         <%= f.label :amount_to, 'How much gold do you need on <span id="to-world-name"></span>? (At least 10 000/10k)'.html_safe %>
-        <%= f.number_field :amount_to, value: 0, class: 'align-right', maxlength: 7 %>
+        <%= f.number_field :amount_to, value: 0, class: 'align-right' %>
         <div id="rate-reduction-teaser">
           <p>* 300k+ = -<span></span>%!</p>
           <p>* 600k+ = -<span></span>%!</p>
@@ -48,10 +48,10 @@
       </div>
 
       <div id="final-details" class="initially-hidden">
-        <%= f.label :character_from, 'Character who sends gold' %>
+        <label for="character-from-input">Character who sends gold</label>
         <%= f.text_field :character_from, id: 'character-from-input' %>
 
-        <%= f.label :character_to, 'Character who will receive gold' %>
+        <label for="character-from-input">Character who will receive gold</label>
         <%= f.text_field :character_to, id: 'character-to-input' %>
 
         <%= f.submit 'Create my order', id: 'create-order-button', class: 'smuggler-button' %>
