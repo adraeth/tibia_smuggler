@@ -16,6 +16,6 @@ class LoginAttempt < ActiveRecord::Base
   validates :login, presence: true
 
   def self.allowed?(ip)
-    LoginAttempt.where('ip = ? AND created_at > ?', ip, 30.minutes.ago).count > 4 ? false : true
+    LoginAttempt.where('ip = ? AND created_at > ?', ip, 5.minutes.ago).count > 4 ? false : true
   end
 end
