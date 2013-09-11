@@ -40,7 +40,7 @@
           <% @orders_last_month.select { |order| order.order_status_id == 4 }.each do |order| %>
             <% if order.created_at.day != day && day != 0 %>
               <tr class="bold">
-                <td>Daily profit:</td><td></td><td></td><td><%= daily_profit %></td>
+                <td>Daily profit:</td><td>(<%= day.ordinalize %>)</td><td></td><td><%= daily_profit %></td>
               </tr>
               <% daily_profit = 0 %>
             <% end %>
@@ -73,7 +73,7 @@
       <% @orders_this_month.select { |order| order.order_status_id == 4 }.each do |order| %>
         <% if order.created_at.day != day && day != 0 %>
           <tr class="bold">
-            <td>Daily profit:</td><td></td><td></td><td><%= daily_profit %></td>
+            <td>Daily profit:</td><td>(<%= day.ordinalize %>)</td><td></td><td><%= daily_profit %></td>
           </tr>
           <% daily_profit = 0 %>
         <% end %>
