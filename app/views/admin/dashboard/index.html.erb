@@ -28,6 +28,72 @@
     </table>
   </div>
   <div class="rounded-square">
+    <h2>Last month's daily log:</h2>
+      <table>
+        <thead>
+          <tr class="bold">
+            <td>Username</td><td>From</td><td>To</td><td>Profit</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% day = 0; daily_profit = 0 %>
+          <% @orders_last_month.select { |order| order.order_status_id == 4 }.each do |order| %>
+            <% if order.created_at.day != day && day != 0 %>
+              <tr class="bold">
+                <td>Daily profit:</td><td></td><td></td><td><%= daily_profit %></td>
+              </tr>
+              <% daily_profit = 0 %>
+            <% end %>
+            <% day = order.created_at.day; daily_profit += (order.amount_from - order.amount_to) %>
+            <tr>
+              <td><%= order.user.name %></td>
+              <td><%= number_with_delimiter(order.amount_from, delimiter: ' ') %></td>
+              <td><%= number_with_delimiter(order.amount_to, delimiter: ' ') %></td>
+              <td><%= number_with_delimiter((order.amount_from - order.amount_to), delimiter: ' ') %></td>
+            </tr>
+          <% end %>
+          <% if @orders_last_month.select { |order| order.order_status_id == 4 }.any? %>
+            <tr class="bold">
+              <td>Daily profit:</td><td>(<%= day.ordinalize %>)</td><td></td><td><%= number_with_delimiter(daily_profit, delimiter: ' ') %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+  <div class="rounded-square">
+    <h2>This month's daily log:</h2>
+    <table>
+      <thead>
+        <tr class="bold">
+          <td>Username</td><td>From</td><td>To</td><td>Profit</td>
+        </tr>
+      </thead>
+      <tbody>
+      <% day = 0; daily_profit = 0 %>
+      <% @orders_this_month.select { |order| order.order_status_id == 4 }.each do |order| %>
+        <% if order.created_at.day != day && day != 0 %>
+          <tr class="bold">
+            <td>Daily profit:</td><td></td><td></td><td><%= daily_profit %></td>
+          </tr>
+          <% daily_profit = 0 %>
+        <% end %>
+        <% day = order.created_at.day; daily_profit += (order.amount_from - order.amount_to) %>
+        <tr>
+          <td><%= order.user.name %></td>
+          <td><%= number_with_delimiter(order.amount_from, delimiter: ' ') %></td>
+          <td><%= number_with_delimiter(order.amount_to, delimiter: ' ') %></td>
+          <td><%= number_with_delimiter((order.amount_from - order.amount_to), delimiter: ' ') %></td>
+        </tr>
+      <% end %>
+      <% if @orders_this_month.select { |order| order.order_status_id == 4 }.any? %>
+        <tr class="bold">
+          <td>Daily profit:</td><td>(<%= day.ordinalize %>)</td><td></td><td><%= number_with_delimiter(daily_profit, delimiter: ' ') %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="rounded-square">
     <h2>Overall stats:</h2>
     <table>
       <tr><td>Orders placed:</td><td class="bold"><%= @orders.count %></td></tr>

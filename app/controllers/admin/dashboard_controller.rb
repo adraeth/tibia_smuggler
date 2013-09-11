@@ -4,9 +4,9 @@ class Admin::DashboardController < ApplicationController
   before_action :authorize
 
   def index
-    @orders_last_month = Order.created_last_month.to_a
-    @orders_this_month = Order.created_this_month.to_a
-    @orders = Order.all.to_a
+    @orders_last_month = Order.created_last_month.includes(:user, :order_status, :world_to, :world_from).to_a
+    @orders_this_month = Order.created_this_month.includes(:user, :order_status, :world_to, :world_from).to_a
+    @orders = Order.all.includes(:user, :order_status, :world_to, :world_from).to_a
   end
 
   private
