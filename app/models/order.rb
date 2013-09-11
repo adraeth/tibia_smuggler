@@ -48,6 +48,8 @@ class Order < ActiveRecord::Base
   validate  :world_from_and_to_must_differ
 
   scope :recent, -> { where("created_at >= '#{ 10.days.ago }'") }
+  scope :created_this_month, -> { where("created_at >= '#{ Time.now.beginning_of_month }'")}
+  scope :created_last_month, -> { where("created_at >= '#{ Time.now.beginning_of_month - 1.month }' AND created_at <= '#{ (Time.now - 1.month).end_of_month }'")}
   default_scope { order('created_at desc') }
 
   def calculate_amount_from

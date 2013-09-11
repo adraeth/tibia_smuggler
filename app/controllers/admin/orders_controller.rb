@@ -5,7 +5,7 @@ class Admin::OrdersController < ApplicationController
   before_action :find_order, only: [:destroy, :accept, :complete]
 
   def index
-    @orders = Order.includes(:user, :order_status, :world_to, :world_from)
+    @orders = Order.recent.includes(:user, :order_status, :world_to, :world_from)
   end
 
   def destroy
