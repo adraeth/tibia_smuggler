@@ -1,0 +1,20 @@
+<div id="goldlist" class="has-fancy-inputs but-tiny-inputs">
+  <table>
+    <thead>
+      <tr>
+        <td>Name</td><td>Blocked for outgoing</td><td>Blocked for incoming</td><td>Amount</td><td>Add/Subtract</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @worlds.each do |world| %>
+        <tr id="<%= dom_id world %>" class="<%= cycle('odd', 'even') -%>">
+          <td><%= world.name %></td>
+          <td><%= check_box_tag world.name, 1, world.blocked_for_outgoing, class: 'tick-outgoing' %></td>
+          <td><%= check_box_tag world.name, 1, world.blocked_for_incoming, class: 'tick-incoming' %></td>
+          <td class="righttext"><%= number_with_delimiter world.amount, delimiter: ' ' %></td>
+          <td><%= number_field_tag world.id, nil, class: 'amount-ajax-input', id: nil %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

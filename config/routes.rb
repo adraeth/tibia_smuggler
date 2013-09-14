@@ -13,11 +13,15 @@ TibiaSmuggler::Application.routes.draw do
 
     resources :orders, only: [:index]
     resources :news, only: [:new, :create, :index]
+    resources :worlds, only: :index
 
     get '', to: 'dashboard#index', as: '/'
     get '/orders/:id/accept',   to: 'orders#accept',    as: 'accept_order'
     get '/orders/:id/complete', to: 'orders#complete',  as: 'complete_order'
     get '/orders/:id/reject/',  to: 'orders#destroy',    as: 'reject_order'
+    match '/worlds/:id/toggle_outgoing_lock', to: 'worlds#toggle_outgoing_lock', via: :post
+    match '/worlds/:id/toggle_incoming_lock', to: 'worlds#toggle_incoming_lock', via: :post
+    match '/worlds/:id/edit_amount', to: 'worlds#edit_amount', via: :post
   end
 
   get '/login',                       to: 'sessions#new', as: 'login'
