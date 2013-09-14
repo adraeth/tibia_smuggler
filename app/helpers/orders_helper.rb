@@ -10,7 +10,7 @@ module OrdersHelper
 
   def get_smuggler_charname
     if @order.order_status_id.between?(2,4)
-      link_to "Gold Smuggler #{@order.world_to.name}",
+      link_to "Gold Smuggler #{@order.world_from.name}",
             "http://www.tibia.com/community/?subtopic=characters&amp;name=Gold+Smuggler+#{@order.world_from.name}".html_safe
     else
       '---'
