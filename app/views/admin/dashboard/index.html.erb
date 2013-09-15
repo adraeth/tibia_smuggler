@@ -1,3 +1,7 @@
+<%= button_to('Manage worlds', admin_worlds_path, class: 'smuggler-button user-button', method: :get) if current_user.can_manage_worlds? %>
+<%= button_to('View logs', admin_log_entries_path, class: 'smuggler-button user-button', method: :get) if current_user.can_manage_worlds? %>
+<%= button_to('Manage orders', admin_orders_path, class: 'smuggler-button user-button', method: :get) if current_user.can_process_orders? || current_user.can_accept_orders? %>
+<div class="float-clearer"></div>
 <% if @current_user.can_view_stats? %>
   <div class="rounded-square">
     <h2>Last month's stats:</h2>
