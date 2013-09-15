@@ -1,0 +1,17 @@
+<div id="goldlist">
+  <table>
+    <thead>
+    <tr>
+      <td>Time ago</td><td>Message</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @log_entries.each do |entry| %>
+      <tr class="<%= cycle('odd', 'even') -%>">
+        <td><%= time_ago_in_words(entry.created_at) %></td>
+        <td><%= entry.message %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

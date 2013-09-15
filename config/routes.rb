@@ -1,7 +1,7 @@
 TibiaSmuggler::Application.routes.draw do
 
-  resources :news, only: [:index, :show] # TODO: Assign proper routes when finished
-  resources :worlds, only: [:index] # TODO: Assign proper routes when finished
+  resources :news, only: [:index, :show]
+  resources :worlds, only: [:index]
   resources :users, except: :new
   resources :sessions, only: [:create, :destroy]
   resources :rates, only: [:show]
@@ -14,6 +14,7 @@ TibiaSmuggler::Application.routes.draw do
     resources :orders, only: [:index]
     resources :news, only: [:new, :create, :index]
     resources :worlds, only: :index
+    resources :log_entries, only: :index
 
     get '', to: 'dashboard#index', as: '/'
     get '/orders/:id/accept',   to: 'orders#accept',    as: 'accept_order'

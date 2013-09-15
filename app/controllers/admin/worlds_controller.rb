@@ -9,20 +9,17 @@ class Admin::WorldsController < ApplicationController
   end
 
   def toggle_outgoing_lock
-    @world.blocked_for_outgoing = !@world.blocked_for_outgoing
-    @world.save
+    @world.toggle_outgoing_lock
     render json: {status: 'completed'}
   end
   
   def toggle_incoming_lock
-    @world.blocked_for_incoming = !@world.blocked_for_incoming
-    @world.save
+    @world.toggle_incoming_lock
     render json: {status: 'completed'}
   end
 
   def edit_amount
-    @world.amount += params[:amount].to_i
-    @world.save
+    @world.change_amount(params[:amount].to_i)
     render json: {status: 'completed', amount: @world.reload.amount}
   end
 
